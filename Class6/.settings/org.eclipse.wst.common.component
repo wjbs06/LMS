@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Class6">
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/" source-path="/WebContent"/>
-        <property name="java-output-path" value="/Class6/build/classes"/>
-        <property name="context-root" value="Class6"/>
-    </wb-module>
-</project-modules>
