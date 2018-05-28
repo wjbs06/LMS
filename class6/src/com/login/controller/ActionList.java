@@ -1,6 +1,10 @@
 package com.login.controller;
 
-import com.login.action.login;
+import com.login.action.Action;
+import com.login.action.AddForm;
+import com.login.action.findForm;
+import com.login.action.idChk;
+import com.login.action.loginForm;
 
 public class ActionList {
 	
@@ -9,8 +13,14 @@ public class ActionList {
 			// ·Î±×.			
 			System.out.println("ActionList : "+list);
 			
-		if(list.equals("login")){
-			action=new login();
+		if(list.equals("LoginForm")){
+			action=new loginForm();
+		}else if(list.equals("AddForm")){
+			action=new AddForm();
+		}else if(list.equals("findForm")){
+			action=new findForm();
+		}else if(list.equals("idChk")){
+			action=new idChk();
 		}
 		return action;
 	}

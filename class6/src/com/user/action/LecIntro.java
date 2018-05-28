@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-public class way implements Action {
+public class LecIntro implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url="../user/guro/Directions.jsp";
+		String url="../user/class/Intro.jsp";
 		String realpath="../..";
 		String subpath="..";
 		request.setAttribute("realpath",realpath );

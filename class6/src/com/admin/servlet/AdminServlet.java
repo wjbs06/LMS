@@ -1,7 +1,6 @@
-package com.login.servlet;
+package com.admin.servlet;
 
 import java.io.IOException;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.login.action.Action;
-import com.login.controller.ActionList;
+import com.user.action.Action;
+import com.user.controller.ActionList;
 
 
-public class LoginServlet extends HttpServlet {
+public class AdminServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("login servlet");
+
 		String list=null;
 		String temp=request.getServletPath();
-		
-		String id = request.getParameter("memId");
-		System.out.println(id+"아이디");
-		
-		System.out.println("temp-"+temp);
 		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함
 		int leng=0;
 		if(temp2[2].contains(".com")){
@@ -40,16 +34,20 @@ public class LoginServlet extends HttpServlet {
 		if(temp2[1].equals("user")){
 			
 		}else if(temp2[1].equals("Login")){
-			ActionList al=new ActionList();
-			Action action=al.getAction(list);
 			
-			if(action!=null){
-				action.execute(request, response);
-			}
 		}else if(temp2[1].equals("admin")){
 			
 		}else{
 			
+		}
+		
+		
+	
+		ActionList al=new ActionList();
+		Action action=al.getAction(list);
+		
+		if(action!=null){
+			action.execute(request, response);
 		}
 	
 	}

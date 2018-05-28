@@ -13,16 +13,16 @@
 				<div class="top">
 					<!-- 상단 로그인 -->
 					<div class="login">
-						<button class="memberLogin">로그인</button>
-						<button class="memberLogin">회원가입</button>
+						<button class="memberLogin" id="Add">회원가입</button>
+						<button class="memberLogin" id="Login">로그인</button>
 					</div>
 				</div>
 				<div>
 					<div class="clear"></div>
 					<div class="grid_12 content">
 						<h3>조직도</h3>
-						<img alt="chart" src="../img/guro/chart/chart_01.jpg">
-						<img style="width: 800px;" alt="chart" src="../img/guro/chart/chart_02.jpg">
+						<img alt="chart" src="${subpath }/img/guro/chart/chart_01.jpg">
+						<img style="width: 800px;" alt="chart" src="${subpath }/img/guro/chart/chart_02.jpg">
 						
 					</div>
 				</div>

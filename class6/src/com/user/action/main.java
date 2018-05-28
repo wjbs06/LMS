@@ -14,10 +14,11 @@ public class main implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url="/user/Main.jsp";
-		String realpath="..";
+		String url="../user/index/main.jsp";
+		String realpath="../..";
+		String subpath="..";
 		request.setAttribute("realpath",realpath );
-		
+		request.setAttribute("subpath",subpath );
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

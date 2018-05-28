@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Class6-LMS</title>
 		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-		<link href="../css/main.css" rel="stylesheet" type="text/css">
+		<link href="${realpath }/css/main.css" rel="stylesheet" type="text/css">
 		<style type="text/css">					
 		*{
 			font-family: 'Nanum Gothic', sans-serif;
@@ -60,20 +60,20 @@
 				<div class="top">
 					<!-- 상단 로그인 -->
 					<div class="login">
-						<button class="memberLogin">로그인</button>
-						<button class="memberLogin">회원가입</button>
+						<button class="memberLogin" id="Add">회원가입</button>
+						<button class="memberLogin" id="Login">로그인</button>
 					</div>
 				</div>
 				<div class="main" style="overflow: auto">
 					<!-- 메인화면 -->
 					<h1>강사진소개</h1>
 						<div class="clear"></div>
-						<img alt="profile" src="../img/guro/profile/profile_01.jpg">
+						<img alt="profile" src="${subpath }/img/guro/profile/profile_01.jpg">
 						<br>
 						<div class="row">
 						  <div class="column">
 						    <div class="card">
-						      <img src="../img/guro/profile/profile_02.jpg">
+						      <img src="${subpath }/img/guro/profile/profile_02.jpg">
 						      <div class="pro">
 						        <h2>유시민</h2>
 						        <p class="title">
@@ -104,7 +104,7 @@
 						
 						  <div class="column">
 						    <div class="card">
-						      <img src="../img/guro/profile/profile_03.jpg">
+						      <img src="${subpath }/img/guro/profile/profile_03.jpg">
 						      <div class="pro">
 						        <h2>설민석</h2>
 						        <p class="title">
@@ -134,7 +134,7 @@
 						  </div>
 						  <div class="column">
 						    <div class="card">
-						      <img src="../img/guro/profile/profile_04.jpg">
+						      <img src="${subpath }/img/guro/profile/profile_04.jpg">
 						      <div class="pro">
 						        <h2>최진기</h2>
 						        <p class="title">

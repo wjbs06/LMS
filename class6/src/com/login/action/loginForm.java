@@ -7,16 +7,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.login.controller.Action;
 
 
-public class login implements Action {
+public class loginForm implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url="login/LoginForm.jsp";
+		String url="../login/LoginForm.jsp";
 		
+		String realpath="../..";
+		String subpath="..";
+		request.setAttribute("realpath",realpath );
+		request.setAttribute("subpath",subpath );
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

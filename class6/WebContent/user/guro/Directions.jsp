@@ -14,13 +14,13 @@
 				<div class="top">
 					<!-- 상단 로그인 -->
 					<div class="login">
-						<button class="memberLogin">로그인</button>
-						<button class="memberLogin">회원가입</button>
+						<button class="memberLogin" id="Add">회원가입</button>
+						<button class="memberLogin" id="Login">로그인</button>
 					</div>
 				</div>
 				<div class="main" style="overflow: auto">
 					<!-- 메인화면 -->
-					<img alt="navi" src="../img/guro/directions/directions_01.jpg" style="margin-left: 20px;">
+					<img alt="navi" src="${subpath }/img/guro/directions/directions_01.jpg" style="margin-left: 20px;">
 						<div class="clear"></div>
 	    				<div id="map"  style="border:5px solid #dedede;float:left;width:900px;height:300px;z-index: -1;margin-left: 20px;" >
 	    				</div>

@@ -57,6 +57,14 @@
 			$('.menu4').mouseout(function(){
 				$('.advice').css("background", "rgba(255, 255, 255, 0)");
 			});	
+			
+			//로그인
+			$('#Login').click(function(){
+				 location.href = "../Login/LoginForm.com";
+			});
+			$('#Add').click(function(){
+				 location.href = "../Login/AddForm.com";
+			});
 		});
 		</script>
 	</head>	
@@ -98,27 +106,27 @@
 				<div class="menu3" id="menu">
 					<!-- 강의 -->
 					<div class="clabutton">
-						<a href="../class/Intro.jsp">강의 소개</a>					
+						<a href="../user/LecIntro.com">강의 소개</a>					
 					</div>
 					<div class="cla">
 						<div class="clajava">
-							<a href="../class/Java.jsp">JAVA 과정</a>
+							<a href="../user/Java.com">JAVA 과정</a>
 						</div>
 						<div class="clac">
-							<a href="../class/Clanguage.jsp">C언어 과정</a>
+							<a href="../user/Clanguage.com">C언어 과정</a>
 						</div>
 						<div class="clabig">
-							<a href="../class/Bigdata.jsp">빅데이터 과정</a>
+							<a href="../user/Bigdata.com">빅데이터 과정</a>
 						</div>
 						<div class="claand">
-							<a href="../class/Android.jsp">안드로이드 과정</a>
+							<a href="../user/Android.com">안드로이드 과정</a>
 						</div>
 					</div>
 				</div>
 				<div class="menu4" id="menu">
 					<!-- 상담 -->
 					<div class="advice">
-						<a href="../main/Main.jsp">상담</a>
+						<a href="../user/index.com">상담</a>
 					</div>
 				</div>
 				<div class="menu5" id="menu">

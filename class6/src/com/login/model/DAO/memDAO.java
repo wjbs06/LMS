@@ -19,7 +19,7 @@ public class memDAO
 	private StringBuffer sb1,sb2;
     
     // ΩÃ±€≈Ê ∆–≈œ
-    private memDAO(){}
+    public memDAO(){}
     public static memDAO getInstance(){
         if(instance==null)
             instance=new memDAO();

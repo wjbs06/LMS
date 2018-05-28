@@ -1,4 +1,4 @@
-package com.user.action;
+package com.login.action;
 
 import java.io.IOException;
 
@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-public class way implements Action {
+public class findForm implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url="../user/guro/Directions.jsp";
+		String url="../login/findForm.jsp";
+		
 		String realpath="../..";
 		String subpath="..";
 		request.setAttribute("realpath",realpath );

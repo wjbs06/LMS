@@ -13,8 +13,8 @@
 				<div class="top">
 					<!-- 상단 로그인 -->
 					<div class="login">
-						<button class="memberLogin">로그인</button>
-						<button class="memberLogin">회원가입</button>
+						<button class="memberLogin" id="Add">회원가입</button>
+						<button class="memberLogin" id="Login">로그인</button>
 					</div>
 				</div>
 				<div class="main" style="overflow: auto" >
@@ -22,22 +22,22 @@
 					<div class="slideshow-container" style="margin: 20px 10px 10px 20px">
 					
 					<div class="mySlides fade">
-					  <img src="../img/main/MainPage_Banner_01.JPG" style="width:100%">
+					  <img src="${subpath }/img/main/MainPage_Banner_01.JPG" style="width:100%">
 					</div>
 					<div class="mySlides fade">
-					  <img src="../img/main/MainPage_Banner_02.JPG" style="width:100%">
+					  <img src="${subpath }/img/main/MainPage_Banner_02.JPG" style="width:100%">
 					</div>
 					<div class="mySlides fade">
-					  <img src="../img/main/MainPage_Banner_03.JPG" style="width:100%">
+					  <img src="${subpath }/img/main/MainPage_Banner_03.JPG" style="width:100%">
 					</div>
 					<div class="mySlides fade">
-					  <img src="../img/main/MainPage_Banner_04.JPG" style="width:100%">
+					  <img src="${subpath }/img/main/MainPage_Banner_04.JPG" style="width:100%">
 					</div>
 					<div class="mySlides fade">
-					  <img src="../img/main/MainPage_Banner_05.JPG" style="width:100%">
+					  <img src="${subpath }/img/main/MainPage_Banner_05.JPG" style="width:100%">
 					</div>
 					<div class="mySlides fade">
-					  <img src="../img/main/MainPage_Banner_06.JPG" style="width:100%">
+					  <img src="${subpath }/img/main/MainPage_Banner_06.JPG" style="width:100%">
 					</div>
 					</div>
 					<div style="text-align:center">

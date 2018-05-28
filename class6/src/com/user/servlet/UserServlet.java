@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.login.servlet.LoginServlet;
 import com.user.action.Action;
 import com.user.controller.ActionList;
 
 @WebServlet(
-		urlPatterns={"/user/index",
+		urlPatterns={
+				"/user/index",
 				"/user/index.com",
 				"*.com"
 		})
@@ -23,31 +25,40 @@ public class UserServlet extends HttpServlet {
 
 		String list=null;
 		String temp=request.getServletPath();
-		System.out.println(temp);
 		
-		String temp1=temp.substring(6);
+		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함
+		System.out.println("유저");
 		int leng=0;
-		if(temp1.contains(".com")){
-			leng=temp1.length()-4;
-			list=temp1.substring(0,leng);
+		if(temp2[2].contains(".com")){
+			leng=temp2[2].length()-4;
+			list=temp2[2].substring(0,leng);
 		}
-		
-		System.out.println(list);
+		System.out.println("list: "+list);
 		// 기본 사이트 방문 시 default 커맨드는 main으로.
 		if(list==null||list.equals("index")){
 			list="main";
 		}
-		// 로깅
-		System.out.println("-----------------------------");
 		System.out.println("Servlet : list값 - " + list);			
-	
-		ActionList al=new ActionList();
-		Action action=al.getAction(list);
 		
-		if(action!=null){
-			action.execute(request, response);
+		if(temp2[1].equals("user")){
+			ActionList al=new ActionList();
+			Action action=al.getAction(list);
+			
+			if(action!=null){
+				action.execute(request, response);
+			}
+		}else if(temp2[1].equals("Login")){
+			System.out.println("login servlet 실행");
+			
+			LoginServlet ls=new LoginServlet();
+			ls.service(request, response);
+			
+		}else if(temp2[1].equals("admin")){
+			System.out.println("admin servlet 실행");
+			LoginServlet ls=new LoginServlet();
+			ls.service(request, response);
 		}
-	
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
