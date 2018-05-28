@@ -12,7 +12,7 @@ import com.login.servlet.LoginServlet;
 import com.user.action.Action;
 import com.user.controller.ActionList;
 
-@WebServlet(
+@WebServlet(//가장 처음으로 요청을 받음.
 		urlPatterns={
 				"/user/index",
 				"/user/index.com",
@@ -24,7 +24,7 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String list=null;
-		String temp=request.getServletPath();
+		String temp=request.getServletPath();//요청주소를 확인
 		
 		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함
 		System.out.println("유저");
@@ -38,25 +38,25 @@ public class UserServlet extends HttpServlet {
 		if(list==null||list.equals("index")){
 			list="main";
 		}
-		System.out.println("Servlet : list값 - " + list);			
+		System.out.println("Servlet : list값 - " + list);
 		
-		if(temp2[1].equals("user")){
-			ActionList al=new ActionList();
-			Action action=al.getAction(list);
+		if(temp2[1].equals("user")){//user로 시작하면
+			ActionList al=new ActionList();//user의 actionList를 불러온다.
+			Action action=al.getAction(list);//actionList에서 원하는 행동을 찾는다.
 			
 			if(action!=null){
-				action.execute(request, response);
+				action.execute(request, response);//해당하는 action으로 보낸다.
 			}
-		}else if(temp2[1].equals("Login")){
+		}else if(temp2[1].equals("Login")){//login으로 시작하면
 			System.out.println("login servlet 실행");
 			
-			LoginServlet ls=new LoginServlet();
-			ls.service(request, response);
+			LoginServlet ls=new LoginServlet();//login servlet 객체 생성
+			ls.service(request, response);//login servlet으로 요청을 넘긴다.
 			
-		}else if(temp2[1].equals("admin")){
+		}else if(temp2[1].equals("admin")){//admin으로 시작하면
 			System.out.println("admin servlet 실행");
-			LoginServlet ls=new LoginServlet();
-			ls.service(request, response);
+			LoginServlet ls=new LoginServlet();//admin servlet 객체 생성
+			ls.service(request, response);//admin servlet으로 요청을 넘긴다.
 		}
 		
 	}
