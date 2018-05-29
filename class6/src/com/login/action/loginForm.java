@@ -16,6 +16,7 @@ public class loginForm implements Action {
 		// TODO Auto-generated method stub
 		String url="../login/LoginForm.jsp";
 		
+		
 		String realpath="../..";
 		String subpath="..";
 		request.setAttribute("realpath",realpath );

@@ -2,7 +2,7 @@ package com.user.model.DTO;
 
 import java.sql.Date;
 
-public class memMPDTO {
+public class mpDTO {
 
 	private String memId,memPw,memName,memGen,memMail,memIpN,memUdN;
 	private int memNo,lecNo,memPnum;

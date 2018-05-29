@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -58,14 +58,54 @@
 				$('.advice').css("background", "rgba(255, 255, 255, 0)");
 			});	
 			
-			//로그인
+			//로그인전
 			$('#Login').click(function(){
 				 location.href = "../Login/LoginForm.com";
 			});
 			$('#Add').click(function(){
 				 location.href = "../Login/AddForm.com";
 			});
+			
+			//로그인후
+			$('div.login').replaceWith('');  
+			$('#Logout').click(function(){
+				location.href = "../Login/Logout.com";
+			});
+			
+			//mypage 이동
+			$("#btnList").click(function(){
+
+				var form = document.createElement('form');
+
+				var objs;
+
+				objs = document.createElement('input');
+
+				objs.setAttribute('type', 'hidden');
+
+				objs.setAttribute('name', 'name');
+
+				objs.setAttribute('value', '${sessionID }');
+
+				form.appendChild(objs);
+
+				form.setAttribute('method', 'post');
+
+				form.setAttribute('action', "../user/mypage.com");
+
+				document.body.appendChild(form);
+
+				form.submit();
+
+			});	
+
+
+
 		});
+		function mypage() {
+			location.href="../user/mypage.com";
+			
+		}
 		</script>
 	</head>	
 	<body>
@@ -137,11 +177,20 @@
 				</div>
 				<div class="menu7" id="menu">
 					<!-- 회원페이지 -->
-					<div class="membutton">
-						<a href="#">회원 페이지</a>
+					<div class="membutton"><!-- 밑에다가 위에 펑션 붙일것 -->
+						<a href="" onclick="mypage()">회원 페이지</a>
 					</div>
 				</div>
 				<div class="menu8" id="menu">
 					<!-- 빈공간 -->
 				</div>		
 			</div>
+			<div class="page">
+				<div class="top">
+					<!-- 상단 로그인 -->
+					<div class="logout">
+						<button class="memberLogin" id="Login">로그인</button>
+						<button class="memberLogin" id="Logout">로그아웃</button>
+						<label name="id" style="float: right;margin: 6px 6px 0px 0px;">${sessionID }님 환영합니다</label>
+					</div>
+				</div>

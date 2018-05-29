@@ -2,6 +2,8 @@ package com.login.controller;
 
 import com.login.action.Action;
 import com.login.action.AddForm;
+import com.login.action.LoginAction;
+import com.login.action.Logout;
 import com.login.action.findForm;
 import com.login.action.idChk;
 import com.login.action.loginForm;
@@ -21,6 +23,10 @@ public class ActionList {
 			action=new findForm();
 		}else if(list.equals("idChk")){
 			action=new idChk();
+		}else if(list.equals("Login")){
+			action=new LoginAction();
+		}else if(list.equals("Logout")){
+			action=new Logout();
 		}
 		return action;
 	}

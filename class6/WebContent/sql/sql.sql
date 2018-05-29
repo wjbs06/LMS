@@ -515,3 +515,4 @@ insert into submit values(1,'abc');
 /* 공지사항 */
 insert into bbs values(bbsTeam_seq.nextval,'잡담','첫번째글','내용무','E1',sysdate,1);
 
+

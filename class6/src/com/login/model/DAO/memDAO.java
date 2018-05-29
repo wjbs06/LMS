@@ -19,12 +19,12 @@ public class memDAO
 	private StringBuffer sb1,sb2;
     
     // 싱글톤 패턴
-    public memDAO(){}
+   /* private memDAO(){}
     public static memDAO getInstance(){
         if(instance==null)
             instance=new memDAO();
         return instance;
-    }
+    }*/
     
     // String -> Date로 변경하는 메서드
     // 문자열로된 생년월일을 Date로 변경하기 위해 필요

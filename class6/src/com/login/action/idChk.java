@@ -23,11 +23,11 @@ public class idChk implements Action {
 		String memId = request.getParameter("memId");
 		System.out.println("아이디체크"+memId);
 		
-		memDAO dao=new memDAO();
+		//memDAO dao=new memDAO();
 		boolean result;
-		result = dao.idChk(memId);
+		//result = dao.idChk(memId);
 		
-		request.setAttribute("memId", result);
+		//request.setAttribute("memId", result);
 		
 		String realpath="../..";
 		String subpath="..";

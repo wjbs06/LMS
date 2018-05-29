@@ -16,7 +16,8 @@ import com.user.controller.ActionList;
 		urlPatterns={
 				"/user/index",
 				"/user/index.com",
-				"*.com"
+				"*.com",
+				"/Login"
 		})
 		
 public class UserServlet extends HttpServlet {
@@ -25,9 +26,12 @@ public class UserServlet extends HttpServlet {
 
 		String list=null;
 		String temp=request.getServletPath();//요청주소를 확인
+		String temp4=request.getRequestURI();
+		String temp5=request.getRemoteAddr();
+		
+		System.out.println("유저"+temp+temp4+temp5);
 		
 		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함
-		System.out.println("유저");
 		int leng=0;
 		if(temp2[2].contains(".com")){
 			leng=temp2[2].length()-4;

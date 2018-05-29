@@ -54,6 +54,12 @@
 				float: right;
 				line-height: 50px;
 			}
+			.logout{
+				width: 390px;
+				height: 52px;
+				float: right;
+				line-height: 50px;
+			}
 			.memberAdd{
 				background-color: #C4D2E3;
 				border: 1px solid gray;

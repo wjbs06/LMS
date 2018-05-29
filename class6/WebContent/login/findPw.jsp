@@ -14,15 +14,15 @@
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8"); 
+		
+			String id = request.getParameter("memId");
+			String name = request.getParameter("memName");
+			String mail = request.getParameter("memMail");
 			
-		String id = request.getParameter("memId");
-		String name = request.getParameter("memName");
-		String mail = request.getParameter("memMail");
-		
-		memMPDAO dao = memMPDAO.getInstance();
-		memMPDTO mDto=dao.findPw(id, name, mail);
-		
-		try{
+			mpDAO dao = mpDAO.getInstance();
+			mpDTO mDto=dao.findPw(id, name, mail);
+			
+			try{
 	%>
 	<form method="post" action="main.jsp">
 	<%

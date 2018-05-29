@@ -50,7 +50,7 @@
 				</div>
 				<div class="main" style="overflow: auto">
 				<div style="margin: 155px 350px;">
-		        <form class="loginform" name="loginInfo" method="post" action="../Login/LoginForm.com" onsubmit="return checkValue()">
+		        <form class="loginform" name="loginInfo" method="post" action="../Login/Login.com" onsubmit="return checkValue()">
 		            <br><br>
 		            <table>
 		                <tr>

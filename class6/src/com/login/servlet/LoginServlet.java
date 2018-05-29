@@ -20,8 +20,10 @@ public class LoginServlet extends HttpServlet {
 		String list=null;
 		String temp=request.getServletPath();
 		
-		String id = request.getParameter("memId");
-		System.out.println(id+"아이디");
+		String memId = request.getParameter("memId");
+		System.out.println(memId+"아이디");
+		String memPw = request.getParameter("memPw");
+		System.out.println(memPw+"아이디");
 		
 		System.out.println("temp-"+temp);
 		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함
@@ -40,6 +42,7 @@ public class LoginServlet extends HttpServlet {
 		if(temp2[1].equals("user")){
 			
 		}else if(temp2[1].equals("Login")){
+			System.out.println("여기실행");
 			ActionList al=new ActionList();
 			Action action=al.getAction(list);
 			

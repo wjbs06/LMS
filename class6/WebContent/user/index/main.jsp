@@ -5,18 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Class6-LMS</title>
-	</head>	
-	<body>
-		<div class="container">
 			<jsp:include page="${realpath }/layout/Header.jsp" />
-			<div class="page">
-				<div class="top">
-					<!-- 상단 로그인 -->
-					<div class="login">
-						<button class="memberLogin" id="Add">회원가입</button>
-						<button class="memberLogin" id="Login">로그인</button>
-					</div>
-				</div>
 				<div class="main" style="overflow: auto" >
 					<!-- main slide -->
 					<div class="slideshow-container" style="margin: 20px 10px 10px 20px">

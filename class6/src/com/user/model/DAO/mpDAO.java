@@ -11,7 +11,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
-import com.user.model.DTO.memMPDTO;
+import com.user.model.DTO.mpDTO;
 
 
 
@@ -19,21 +19,21 @@ import com.user.model.DTO.memMPDTO;
 
 import util.DB;
 
-public class memMPDAO {
+public class mpDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
 
-public List<memMPDTO> getMyPage(String memId) throws SQLException {
+public List<mpDTO> getMyPage(String memId) throws SQLException {
 		
-		List<memMPDTO> list = new ArrayList<memMPDTO>();
+		List<mpDTO> list = new ArrayList<mpDTO>();
 		String sql1="SELECT LECNAME,LECSTART,LECEND FROM LECHURE WHERE LECNO=(SELECT LECNO FROM MEMBER WHERE MEMID=?)";
 		String sql2="SELECT GRAJAVA,GRAWEB,GRADB FROM GRADE WHERE MEMID=?";
 		String sql3="SELECT COUNT(*) AS CNT FROM CHK WHERE MEMID=? AND (TO_CHAR( CHKIPD, 'YYYY-MM-DD' ) > SYSDATE-1)";
 		
 		System.out.println(memId);
-		memMPDTO mDTO = new memMPDTO();
+		mpDTO mDTO = new mpDTO();
 		try{
 			try{
 				Class.forName("oracle.jdbc.driver.OracleDriver");
