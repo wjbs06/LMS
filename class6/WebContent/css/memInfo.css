@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+			/* memInfo 시작 */
+			.infoBox{
+				margin: 100px 0px 0px 150px;
+			}
+			.infoBox>tr{
+			}
+			/* memInfo 끝 */

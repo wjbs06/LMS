@@ -9,29 +9,29 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.user.model.DAO.memDAO;
-import com.user.model.DTO.memDTO;
+import com.user.model.DAO.bbsMemDAO;
+import com.user.model.DTO.bbsMemDTO;
 
 
-public class mypage implements Action {//mypage 
+public class memBbs implements Action {//mypage 
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url="../user/member/mypage.jsp";
+		String url="../user/member/memBbs.jsp";
 		String memId=request.getParameter("id");
 		
 		System.out.println("mypage¿¡¼­ "+memId);
 		
-		memDAO dao=new memDAO();
-		List<memDTO> list=null;
-		try {
+		bbsMemDAO dao=new bbsMemDAO();
+		List<bbsMemDTO> list=null;
+		/*try {
 			list = dao.getMyPage(memId);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		request.setAttribute("list", list);
 		String realpath="../..";

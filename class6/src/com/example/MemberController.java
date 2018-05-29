@@ -14,10 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.user.model.DAO.memDAO;
 import com.user.model.DTO.memDTO;
 
-@WebServlet(
-		urlPatterns={
-				"/user/mypage.com"
-		})
 public class MemberController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)

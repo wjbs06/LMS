@@ -13,27 +13,28 @@ import com.user.model.DAO.memDAO;
 import com.user.model.DTO.memDTO;
 
 
-public class mypage implements Action {//mypage 
+public class memInfo implements Action {//mypage 
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url="../user/member/mypage.jsp";
+		String url="../user/member/meminfo.jsp";
 		String memId=request.getParameter("id");
 		
-		System.out.println("mypage에서 "+memId);
+		System.out.println("myInfo에서 "+memId);
 		
 		memDAO dao=new memDAO();
 		List<memDTO> list=null;
 		try {
-			list = dao.getMyPage(memId);
+			list = dao.getUserInfo(memId);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("list", list);
+		request.setAttribute("infoList", list);
+		
 		String realpath="../..";
 		String subpath="..";
 		request.setAttribute("realpath",realpath );

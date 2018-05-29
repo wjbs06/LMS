@@ -274,7 +274,7 @@ CREATE TABLE privacy (
 	lecNo NUMBER, /* 강의번호 */
 	memName VARCHAR2(40) NOT NULL, /* 이름 */
 	memGen VARCHAR2(4) NOT NULL, /* 성별 */
-	memBrith DATE NOT NULL, /* 생년월일 */
+	memBirth DATE NOT NULL, /* 생년월일 */
 	memMail VARCHAR2(40) NOT NULL, /* 이메일 */
 	memPnum NUMBER(11,0) NOT NULL /* 전화번호 */
 );
@@ -470,11 +470,6 @@ drop sequence bbsTeam_seq;
 create sequence bbsTeam_seq;
 
 
-/* 부서 */
-insert into team values(1,'행정');
-insert into team values(2,'영업');
-insert into team values(3,'강사');
-
 /* 직원 */
 insert into member values('E1',1234,'행정',sysdate,'');
 
@@ -485,7 +480,7 @@ insert into member values('T1',1234,'강사',sysdate,'E1');
 insert into class values(1,'자바강의장','6강의장',sysdate,'E1');
 
 /* 강의 */
-insert into lechure values(1,'자바',sysdate,sysdate,'강의내용','T1',1,20,sysdate,'E1','');
+insert into lechure values(1,'자바',sysdate,sysdate,'강의내용','T1',1,20,sysdate,'E1');
 
 /* 회원 */
 insert into member values('abc',1234,'학생',sysdate,'');
@@ -511,8 +506,7 @@ insert into bbsTeam values(bbsTeam_seq.nextval,'잡담','첫번째글','내용무','1',sy
 /* 신청 */
 insert into submit values(1,'abc');
 
-
 /* 공지사항 */
-insert into bbs values(bbsTeam_seq.nextval,'잡담','첫번째글','내용무','E1',sysdate,1);
+insert into bbs values(bbs_seq.nextval,'잡담','첫번째글','내용무','E1',sysdate,1,'');
 
 

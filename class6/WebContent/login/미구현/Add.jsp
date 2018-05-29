@@ -72,7 +72,6 @@
                		for(String g : gens){
 						out.println(g);
                		}
-                //  ë¨,ì¬ 
                 %>
                 </td>
             </tr>
@@ -93,6 +92,7 @@
         
         <br>
         <input type="button" value="확인" onclick="goLogin()">
+        <input type="button" value="취소" onclick="goLogin()">
     </div>
 </body>
 </html>

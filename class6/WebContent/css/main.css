@@ -58,7 +58,7 @@
 				width: 390px;
 				height: 52px;
 				float: right;
-				line-height: 50px;
+				line-height: 31px;
 			}
 			.memberAdd{
 				background-color: #C4D2E3;
@@ -174,7 +174,7 @@
 				width: 580px;
 				height: 422px;
 				border: 1px solid black;
-				margin: auto;
+				margin: 54px auto;
 			}
 			#memInfoBox>h3{
 				margin-left: 15px;
@@ -203,6 +203,15 @@
 			.memInfoBoxInCon>table{
 				text-align: center;
 				margin: 0px auto;
+			}
+			.mpbtn{
+				background-color: #C4D2E3;
+				border: 1px solid gray;
+				border-radius: 6px;
+				width: 80px;
+				height: 30px;
+				font-weight: bold;
+				outline: 0px;
 			}
 			/*   mypage 끝   */
 			

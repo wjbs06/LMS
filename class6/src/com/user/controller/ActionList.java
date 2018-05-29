@@ -9,6 +9,8 @@ import com.user.action.Intro;
 import com.user.action.Java;
 import com.user.action.LecIntro;
 import com.user.action.main;
+import com.user.action.memBbs;
+import com.user.action.memInfo;
 import com.user.action.mypage;
 import com.user.action.tea;
 import com.user.action.way;
@@ -43,6 +45,10 @@ public class ActionList {
 			action=new Android();
 		}else if(list.equals("mypage")){//mypage
 			action=new mypage();
+		}else if(list.equals("memBbs")){//mypage
+			action=new memBbs();
+		}else if(list.equals("memInfo")){//mypage
+			action=new memInfo();
 		}else {
 			action=new main();//기본으로 메인을 실행
 		}

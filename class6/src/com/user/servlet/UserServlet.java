@@ -28,6 +28,7 @@ public class UserServlet extends HttpServlet {
 		String temp=request.getServletPath();//요청주소를 확인
 		String temp4=request.getRequestURI();//임시 확인용
 		String temp5=request.getRemoteAddr();//임시 확인용
+		String temp6=request.getParameter("id");
 		
 		System.out.println("유저"+temp+temp4+temp5);//임시 확인용
 		

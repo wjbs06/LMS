@@ -14,99 +14,7 @@
 			}
 		</style>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
-		<script type="text/javascript">
-		$(document).ready(function(){
-			$('.menu2').mouseover(function(){
-				$('.bitbutton').css("background", "rgba(255, 255, 255, 0.28)");
-				$('.bit').css("display","inline");
-			});					
-			$('.menu2').mouseout(function(){
-				$('.bitbutton').css("background", "rgba(255, 255, 255, 0)");
-				$('.bit').css("display","none");
-			});	
-			$('.menu3').mouseover(function(){
-				$('.clabutton').css("background", "rgba(255, 255, 255, 0.28)");
-				$('.cla').css("display","inline");
-			});					
-			$('.menu3').mouseout(function(){
-				$('.clabutton').css("background", "rgba(255, 255, 255, 0)");
-				$('.cla').css("display","none");
-			});	
-			$(".cla>div, .bit>div").mouseover(function(){
-				$(this).css("background", "rgba(0, 0, 0, 0.28)");
-			});
-			$(".cla>div, .bit>div").mouseout(function(){
-				$(this).css("background", "rgba(0, 0, 0, 0)");
-			});
-			
-			$('.menu1').mouseover(function(){
-				$('.mainbutton').css("background", "rgba(255, 255, 255, 0.28)");
-			});					
-			$('.menu1').mouseout(function(){
-				$('.mainbutton').css("background", "rgba(255, 255, 255, 0)");
-			});	
-			$('.menu7').mouseover(function(){
-				$('.membutton').css("background", "rgba(255, 255, 255, 0.28)");
-			});					
-			$('.menu7').mouseout(function(){
-				$('.membutton').css("background", "rgba(255, 255, 255, 0)");
-			});	
-			$('.menu4').mouseover(function(){
-				$('.advice').css("background", "rgba(255, 255, 255, 0.28)");
-			});					
-			$('.menu4').mouseout(function(){
-				$('.advice').css("background", "rgba(255, 255, 255, 0)");
-			});	
-			
-			//로그인전
-			$('#Login').click(function(){
-				 location.href = "../Login/LoginForm.com";
-			});
-			$('#Add').click(function(){
-				 location.href = "../Login/AddForm.com";
-			});
-			
-			//로그인후
-			$('div.login').replaceWith('');  
-			$('#Logout').click(function(){
-				location.href = "../Login/Logout.com";
-			});
-			
-			//mypage 이동
-			$("#btnList").click(function(){
-
-				var form = document.createElement('form');
-
-				var objs;
-
-				objs = document.createElement('input');
-
-				objs.setAttribute('type', 'hidden');
-
-				objs.setAttribute('name', 'name');
-
-				objs.setAttribute('value', '${sessionID }');
-
-				form.appendChild(objs);
-
-				form.setAttribute('method', 'post');
-
-				form.setAttribute('action', "../user/mypage.com");
-
-				document.body.appendChild(form);
-
-				form.submit();
-
-			});	
-
-
-
-		});
-		function mypage() {
-			location.href="../user/mypage.com";
-			
-		}
-		</script>
+		<script type="text/javascript" src="../js/main.js"></script>
 	</head>	
 	<body>
 		<div class="container">
@@ -177,8 +85,8 @@
 				</div>
 				<div class="menu7" id="menu">
 					<!-- 회원페이지 -->
-					<div class="membutton"><!-- 밑에다가 위에 펑션 붙일것 -->
-						<a href="" onclick="mypage()">회원 페이지</a>
+					<div class="membutton">
+						<a id="mypage">회원 페이지</a>
 					</div>
 				</div>
 				<div class="menu8" id="menu">
@@ -191,6 +99,7 @@
 					<div class="logout">
 						<button class="memberLogin" id="Login">로그인</button>
 						<button class="memberLogin" id="Logout">로그아웃</button>
-						<label name="id" style="float: right;margin: 6px 6px 0px 0px;">${sessionID }님 환영합니다</label>
+						<label style="float: right;margin-right: 10px;">님 환영합니다</label>
+						<label name="id" style="float: right;">${sessionID }</label>
 					</div>
 				</div>
