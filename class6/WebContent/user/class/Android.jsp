@@ -30,17 +30,7 @@
 	.btn:hover {background: #0b7dda;}
 
 </style>
-	<body>
-		<div class="container">
 			<jsp:include page="${realpath }/layout/Header.jsp" />
-			<div class="page">
-				<div class="top">
-					<!-- 상단 로그인 -->
-					<div class="login">
-						<button class="memberLogin" id="Add">회원가입</button>
-						<button class="memberLogin" id="Login">로그인</button>
-					</div>
-				</div>
 				<div class="main" style="overflow: auto">
 					<!-- 메인화면 -->
 					<div class="clear"></div>

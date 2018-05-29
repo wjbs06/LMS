@@ -2,7 +2,7 @@ package com.admin.model.DTO;
 
 import java.sql.Date;
 
-public class SubmitDTO {
+public class SubmitDTO {//¹Ì¿Ï¼º
 
 	private String memId,memPw,memName,memGen,memMail,memIpN,memUdN;
 	private int memNo,lecNo,memPnum;

@@ -13,7 +13,7 @@ import com.user.model.DAO.mpDAO;
 import com.user.model.DTO.mpDTO;
 
 
-public class mypage implements Action {
+public class mypage implements Action {//mypage 
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,6 +22,7 @@ public class mypage implements Action {
 		String memId=request.getParameter("id");
 		
 		System.out.println(memId);
+		
 		mpDAO dao=new mpDAO();
 		List<mpDTO> list=null;
 		try {

@@ -12,7 +12,7 @@ import com.user.action.Action;
 import com.user.controller.ActionList;
 
 
-public class AdminServlet extends HttpServlet {
+public class AdminServlet extends HttpServlet {//¹Ì¿Ï¼º
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

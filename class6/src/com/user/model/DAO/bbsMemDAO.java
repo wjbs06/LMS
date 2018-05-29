@@ -12,7 +12,7 @@ import util.DB;
 import com.user.model.DTO.bbsMemDTO;
 
 
-public class bbsMemDAO 
+public class bbsMemDAO//회원 게시판에 사용할 DAO 
 {
 	private Connection conn;
 	private PreparedStatement pstmt;

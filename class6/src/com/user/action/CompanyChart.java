@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-public class CompanyChart implements Action {
+public class CompanyChart implements Action {//조직도 페이지
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

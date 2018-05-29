@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-public class Java implements Action {
+public class Java implements Action {//자바 페이지
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

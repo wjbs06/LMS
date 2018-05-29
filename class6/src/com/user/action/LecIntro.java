@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-public class LecIntro implements Action {
+public class LecIntro implements Action {//강의소개 페이지
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

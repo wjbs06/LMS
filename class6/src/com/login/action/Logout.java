@@ -11,7 +11,7 @@ import com.login.model.DAO.memDAO;
 
 
 
-public class Logout implements Action {
+public class Logout implements Action {//로그아웃 페이지
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

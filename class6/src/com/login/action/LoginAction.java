@@ -12,6 +12,7 @@ import com.login.model.DAO.memDAO;
 
 
 public class LoginAction implements Action {
+	//id,pw 입력 후 로그인 버튼을 누르면 오는 페이지
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

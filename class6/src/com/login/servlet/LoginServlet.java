@@ -12,23 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.login.action.Action;
 import com.login.controller.ActionList;
 
-
+//userservlet에서 login요청을 받으면 이쪽 servlet으로 요청을 패스함.
 public class LoginServlet extends HttpServlet {
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("login servlet");
 		String list=null;
-		String temp=request.getServletPath();
+		String temp=request.getServletPath();//요청 내용확인
 		
-		String memId = request.getParameter("memId");
+		String memId = request.getParameter("memId");//id 받음
 		System.out.println(memId+"아이디");
-		String memPw = request.getParameter("memPw");
+		String memPw = request.getParameter("memPw");//pw 받음
 		System.out.println(memPw+"아이디");
 		
 		System.out.println("temp-"+temp);
 		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함
 		int leng=0;
-		if(temp2[2].contains(".com")){
+		if(temp2[2].contains(".com")){//.com 제거문
 			leng=temp2[2].length()-4;
 			list=temp2[2].substring(0,leng);
 		}
@@ -39,9 +39,9 @@ public class LoginServlet extends HttpServlet {
 		}
 		System.out.println("Servlet : list값 - " + list);			
 		
-		if(temp2[1].equals("user")){
+		if(temp2[1].equals("user")){//user로 시작하면 
 			
-		}else if(temp2[1].equals("Login")){
+		}else if(temp2[1].equals("Login")){//login으로 시작하면 
 			System.out.println("여기실행");
 			ActionList al=new ActionList();
 			Action action=al.getAction(list);
@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 			if(action!=null){
 				action.execute(request, response);
 			}
-		}else if(temp2[1].equals("admin")){
+		}else if(temp2[1].equals("admin")){//admin으로 시작하면
 			
 		}else{
 			

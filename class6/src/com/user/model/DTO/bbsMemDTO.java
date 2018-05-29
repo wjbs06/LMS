@@ -2,8 +2,7 @@ package com.user.model.DTO;
 
 import java.sql.Date;
 
-public class bbsMemDTO 
-{
+public class bbsMemDTO{//회원게시판 DTO
 	private int bbsMemNo;  		// 글번호
 	private String bbsMemCate; 	// 글 분류
 	private String bbsMemName; 	// 글 제목

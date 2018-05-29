@@ -6,18 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Class6-LMS</title>
-	</head>	
-	<body>
-		<div class="container">
 			<jsp:include page="${realpath }/layout/Header.jsp" />
-			<div class="page">
-				<div class="top">
-					<!-- 상단 로그인 -->
-					<div class="login">
-						<button class="memberLogin" id="Add">회원가입</button>
-						<button class="memberLogin" id="Login">로그인</button>
-					</div>
-				</div>
 				<div class="main" style="overflow: auto">
 					<!-- 메인화면 -->
 					<img alt="navi" src="${subpath }/img/guro/directions/directions_01.jpg" style="margin-left: 20px;">
@@ -42,12 +31,12 @@
 	        marker.addListener('click', toggleBounce);
 	      }
 	    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvkWWWZHSz49hdnRk7rcofDaj35n7vFz8&callback=initMap">
-    </script> 
-	<div class=clear10></div>  <div class=clear10></div>  
-	</div>
- 	<div style="color:#0b7cc6; " > <b><i class="entypo-location"></i> 회사주소 : 서울시 구로구 구로동 1234-1 2층 비트캠프 </b></div>
+		    <script async defer
+		    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvkWWWZHSz49hdnRk7rcofDaj35n7vFz8&callback=initMap">
+		    </script> 
+			<div class=clear10></div>  <div class=clear10></div>  
+			</div>
+		 	<div style="color:#0b7cc6; " > <b><i class="entypo-location"></i> 회사주소 : 서울시 구로구 구로동 1234-1 2층 비트캠프 </b></div>
 			<jsp:include page="${realpath }/layout/Footer.jsp" />
 			</div>
 		</div>

@@ -14,7 +14,7 @@ import com.login.model.DTO.memDTO;
 
 
 
-public class idChk implements Action {
+public class idChk implements Action {//id중복검사 페이지 미완성
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

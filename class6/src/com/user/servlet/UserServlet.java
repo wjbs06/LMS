@@ -26,14 +26,14 @@ public class UserServlet extends HttpServlet {
 
 		String list=null;
 		String temp=request.getServletPath();//요청주소를 확인
-		String temp4=request.getRequestURI();
-		String temp5=request.getRemoteAddr();
+		String temp4=request.getRequestURI();//임시 확인용
+		String temp5=request.getRemoteAddr();//임시 확인용
 		
-		System.out.println("유저"+temp+temp4+temp5);
+		System.out.println("유저"+temp+temp4+temp5);//임시 확인용
 		
 		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함
 		int leng=0;
-		if(temp2[2].contains(".com")){
+		if(temp2[2].contains(".com")){//뒷부분 주소인 .com을 제거
 			leng=temp2[2].length()-4;
 			list=temp2[2].substring(0,leng);
 		}
@@ -42,7 +42,7 @@ public class UserServlet extends HttpServlet {
 		if(list==null||list.equals("index")){
 			list="main";
 		}
-		System.out.println("Servlet : list값 - " + list);
+		System.out.println("Servlet : list값 - " + list);//확인용 출력문
 		
 		if(temp2[1].equals("user")){//user로 시작하면
 			ActionList al=new ActionList();//user의 actionList를 불러온다.
@@ -64,7 +64,7 @@ public class UserServlet extends HttpServlet {
 		}
 		
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");

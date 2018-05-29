@@ -7,7 +7,7 @@
 		<title>Class6-LMS</title>
 			<jsp:include page="${realpath }/layout/Header.jsp" />
 				<div class="main" style="overflow: auto" >
-					<!-- main slide -->
+					<!-- main contents Start -->
 					<div class="slideshow-container" style="margin: 20px 10px 10px 20px">
 					
 					<div class="mySlides fade">
@@ -37,6 +37,7 @@
 					  <span class="dot" onclick="currentSlide(5)"></span> 
 					  <span class="dot" onclick="currentSlide(6)"></span> 
 					</div>
+					<!-- main contents End -->
 				</div>					
 				<jsp:include page="${realpath }/layout/Footer.jsp" />
 			</div>

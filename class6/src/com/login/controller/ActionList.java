@@ -15,17 +15,17 @@ public class ActionList {
 			// 로그.			
 			System.out.println("ActionList : "+list);
 			
-		if(list.equals("LoginForm")){
+		if(list.equals("LoginForm")){//로그인 페이지
 			action=new loginForm();
-		}else if(list.equals("AddForm")){
+		}else if(list.equals("AddForm")){//회원가입 페이지
 			action=new AddForm();
-		}else if(list.equals("findForm")){
+		}else if(list.equals("findForm")){//id,pw 찾는 체이지
 			action=new findForm();
-		}else if(list.equals("idChk")){
+		}else if(list.equals("idChk")){//중복검사 페이지
 			action=new idChk();
-		}else if(list.equals("Login")){
+		}else if(list.equals("Login")){//id,pw검사후 로그인승인 페이지
 			action=new LoginAction();
-		}else if(list.equals("Logout")){
+		}else if(list.equals("Logout")){//로그아웃 페이지
 			action=new Logout();
 		}
 		return action;

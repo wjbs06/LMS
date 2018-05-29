@@ -7,7 +7,7 @@ import util.DB;
 
 import com.login.model.DTO.memDTO;
 
-public class memDAO 
+public class memDAO //회원가입 및 검사 DAO
 {
 	
 	private static memDAO instance;

@@ -19,12 +19,12 @@ import com.user.model.DTO.mpDTO;
 
 import util.DB;
 
-public class mpDAO {
+public class mpDAO {//mypage DAO
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-
+//mypage에 표시할 내용 기능
 public List<mpDTO> getMyPage(String memId) throws SQLException {
 		
 		List<mpDTO> list = new ArrayList<mpDTO>();
@@ -32,7 +32,7 @@ public List<mpDTO> getMyPage(String memId) throws SQLException {
 		String sql2="SELECT GRAJAVA,GRAWEB,GRADB FROM GRADE WHERE MEMID=?";
 		String sql3="SELECT COUNT(*) AS CNT FROM CHK WHERE MEMID=? AND (TO_CHAR( CHKIPD, 'YYYY-MM-DD' ) > SYSDATE-1)";
 		
-		System.out.println(memId);
+		System.out.println(memId);//id 확인출력
 		mpDTO mDTO = new mpDTO();
 		try{
 			try{
@@ -43,6 +43,7 @@ public List<mpDTO> getMyPage(String memId) throws SQLException {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			//강의에 대한 내용
 			pstmt=conn.prepareStatement(sql1);
 			pstmt.setString(1, memId);
 			rs=pstmt.executeQuery();
@@ -51,7 +52,7 @@ public List<mpDTO> getMyPage(String memId) throws SQLException {
 				mDTO.setLecStart(rs.getDate("lecStart"));
 				mDTO.setLecEnd(rs.getDate("lecEnd"));
 			}
-			
+			//성적에 대한 내용
 			pstmt=conn.prepareStatement(sql2);
 			pstmt.setString(1, memId);
 			rs=pstmt.executeQuery();
@@ -60,7 +61,7 @@ public List<mpDTO> getMyPage(String memId) throws SQLException {
 				mDTO.setGraWeb(rs.getInt("graWeb"));
 				mDTO.setGraDb(rs.getInt("graDb"));
 			}
-			
+			//출석에 대한 내용
 			pstmt=conn.prepareStatement(sql3);
 			pstmt.setString(1, memId);
 			rs=pstmt.executeQuery();

@@ -2,7 +2,7 @@ package com.login.model.DTO;
 
 import java.sql.Date;
 
-public class memDTO {
+public class memDTO {//회원가입 DTO
 
 	private String memId;		// 아이디(20)
     private String memPw;		// 비밀번호(20)

@@ -41,7 +41,7 @@ public class ActionList {
 			action=new Bigdata();
 		}else if(list.equals("Android")){//안드로이드
 			action=new Android();
-		}else if(list.equals("mypage")){//안드로이드
+		}else if(list.equals("mypage")){//mypage
 			action=new mypage();
 		}else {
 			action=new main();//기본으로 메인을 실행

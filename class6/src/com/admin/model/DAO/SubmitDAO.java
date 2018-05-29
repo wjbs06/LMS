@@ -16,7 +16,7 @@ import com.admin.model.DTO.SubmitDTO;
 
 import util.DB;
 
-public class SubmitDAO {
+public class SubmitDAO {//미완성
 	private Connection conn;
 	private PreparedStatement pstmt;
 //회원 id와 강의 번호가 온다는 가정
