@@ -21,17 +21,17 @@ public class memBbs implements Action {//mypage
 		String url="../user/member/memBbs.jsp";
 		String memId=request.getParameter("id");
 		
-		System.out.println("mypage¿¡¼­ "+memId);
+		System.out.println("memBbs");
 		
 		bbsMemDAO dao=new bbsMemDAO();
 		List<bbsMemDTO> list=null;
-		/*try {
-			list = dao.getMyPage(memId);
+		try {
+			list = dao.selectAll();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 		request.setAttribute("list", list);
 		String realpath="../..";

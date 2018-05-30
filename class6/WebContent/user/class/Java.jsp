@@ -259,7 +259,5 @@
 					</table><!-- 버튼 -->
 				<br>
 				<jsp:include page="${realpath }/layout/Footer.jsp" />
-			</div>
-		</div>
 	</body>
 </html>

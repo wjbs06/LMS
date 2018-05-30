@@ -54,8 +54,6 @@
 			        </div>
 		      		</c:forEach>
 				</div>
-				<jsp:include page="${realpath }/layout/Footer.jsp" />
-			</div>
-		</div>
+		<jsp:include page="${realpath }/layout/Footer.jsp" />
 	</body>
 </html>

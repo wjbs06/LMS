@@ -10,7 +10,6 @@ public class bbsMemDTO{//회원게시판 DTO
 	private String memId; 			// 글쓴이
 	private Date bbsMemDate; 		// 작성일
 	private int bbsMemView; 		// 조회수
-	private Date bbsMemUdD; 		// 수정일
 	
 	public int getBbsMemNo() {
 		return bbsMemNo;
@@ -53,12 +52,6 @@ public class bbsMemDTO{//회원게시판 DTO
 	}
 	public void setBbsMemView(int bbsMemView) {
 		this.bbsMemView = bbsMemView;
-	}
-	public Date getBbsMemUdD() {
-		return bbsMemUdD;
-	}
-	public void setBbsMemUdD(Date bbsMemUdD) {
-		this.bbsMemUdD = bbsMemUdD;
 	}
 	
 

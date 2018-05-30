@@ -126,7 +126,5 @@
 						<br>
 				</div>
 				<jsp:include page="${realpath }/layout/Footer.jsp" />
-			</div>
-		</div>
 	</body>
 </html>

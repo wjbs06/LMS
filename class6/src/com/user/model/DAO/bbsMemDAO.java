@@ -115,6 +115,40 @@ public class bbsMemDAO//회원 게시판에 사용할 DAO
 		return list;
 	}
 	
+	public List<bbsMemDTO> selectOne(int idx) throws SQLException{
+		String sql="SELECT * FROM BBSMEM WHERE BBSMEMNO=?";
+		List<bbsMemDTO> list=new ArrayList<bbsMemDTO>();
+		
+		try{
+			try{
+				conn=DB.getConnction();
+				
+			}catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				bbsMemDTO bean=new bbsMemDTO();
+				bean.setBbsMemNo(rs.getInt("bbsMemNo"));
+				bean.setBbsMemCate(rs.getString("bbsMemCate"));
+				bean.setBbsMemName(rs.getString("bbsMemName"));
+				bean.setBbsMemCon(rs.getString("bbsMemCon"));
+				bean.setMemId(rs.getString("memId"));
+				bean.setBbsMemView(rs.getInt("bbsMemView"));
+				bean.setBbsMemDate(rs.getDate("bbsMemDate"));
+				list.add(bean);
+				
+			}
+		}finally{
+			if(rs!=null)rs.close();
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		return list;
+	}
 	
 	// DB 자원해제
 	private void close()

@@ -39,9 +39,7 @@
 					</div>
 					<!-- main contents End -->
 				</div>					
-				<jsp:include page="${realpath }/layout/Footer.jsp" />
-			</div>
-		</div>
+			<jsp:include page="${realpath }/layout/Footer.jsp" />
 		<jsp:include page="${realpath }/layout/slide.jsp" />
 	</body>
 </html>

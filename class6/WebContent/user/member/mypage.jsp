@@ -43,51 +43,50 @@
 						</div>
 					</div>
 					<div class=memInfoBoxIn><label>출석현황</label><button>출석체크</button>
-					</head>
-
-					<div class=memInfoBoxInCon>
-						<table>
+						<div class=memInfoBoxInCon>
+							<table>
+									<tr>
+										<td>Today</td>
+										<td>
+										<jsp:useBean id="toDay" class="java.util.Date" />
+										<fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd"/>
+										</td>
+									</tr>
+									<tr>
+										<td>출석현황</td>
+										<td>${list.chk }</td>
+									</tr>
+									<tr>
+										<td>출석이수율</td>
+										<td></td>
+									</tr>
+								</table>
+						</div>
+					</div>
+					<div class=memInfoBoxIn><label>성적확인</label>
+						<div class=memInfoBoxInCon>
+							<table>
 								<tr>
-									<td>Today</td>
-									<td>
-									<jsp:useBean id="toDay" class="java.util.Date" />
-									<fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd"/>
-									</td>
+									<th class=th>JAVA</th>
+									<th class=th>WEB</th>
+									<th class=th>DB</th>
 								</tr>
 								<tr>
-									<td>출석현황</td>
-									<td>${list.chk }</td>
-								</tr>
-								<tr>
-									<td>출석이수율</td>
-									<td></td>
+									<td class=th>${list.graJava }점</td>
+									<td class=th>${list.graWeb }점</td>
+									<td class=th>${list.graDb }점</td>
 								</tr>
 							</table>
-					</div></div>
-					<div class=memInfoBoxIn><label>성적확인</label>
-					<div class=memInfoBoxInCon>
-						<table>
-							<tr>
-								<th class=th>JAVA</th>
-								<th class=th>WEB</th>
-								<th class=th>DB</th>
-							</tr>
-							<tr>
-								<td class=th>${list.graJava }점</td>
-								<td class=th>${list.graWeb }점</td>
-								<td class=th>${list.graDb }점</td>
-							</tr>
-						</table>
-						</c:forEach>
-					</div></div>
+						</div>
+					</div>
+					</c:forEach>
 					<div class=memInfoBoxIn><label>빈칸</label>
-					<div class=memInfoBoxInCon>
+						<div class=memInfoBoxInCon>
 					
-					</div></div>
+						</div>
+					</div>
 					</div>
 				</div>
-				<jsp:include page="${realpath }/layout/Footer.jsp" />
-			</div>
-		</div>
+		<jsp:include page="${realpath }/layout/Footer.jsp" />
 	</body>
 </html>

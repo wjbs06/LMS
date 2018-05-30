@@ -38,7 +38,5 @@
 			</div>
 		 	<div style="color:#0b7cc6; " > <b><i class="entypo-location"></i> 회사주소 : 서울시 구로구 구로동 1234-1 2층 비트캠프 </b></div>
 			<jsp:include page="${realpath }/layout/Footer.jsp" />
-			</div>
-		</div>
 	</body>
 </html>
