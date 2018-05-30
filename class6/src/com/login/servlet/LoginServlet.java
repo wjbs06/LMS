@@ -42,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 		if(temp2[1].equals("user")){//user로 시작하면 
 			
 		}else if(temp2[1].equals("Login")){//login으로 시작하면 
-			System.out.println("여기실행");
 			ActionList al=new ActionList();
 			Action action=al.getAction(list);
 			

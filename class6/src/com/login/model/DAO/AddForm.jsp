@@ -6,8 +6,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Class6-LMS</title>
 			<link href="${subpath}/css/login.css" rel="stylesheet" type="text/css">
-			<script type="text/javascript" src="${subpath }/js/loginAdd.js"></script>
 			<jsp:include page="${subpath }/layout/Header.jsp" /> 
+			<script type="text/javascript" src="${subpath }/js/loginAdd.js"></script>
 				<div class="main" style="overflow: auto" >
 					<!-- main contents Start -->
 					<br><br>
@@ -16,15 +16,14 @@
 			        <!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
 			        <!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 memAddJoin.jsp -->
 			        <div style="margin: 0px 345px;">
-			        <form method="post" action="./Add.jsp" name="memInfo" onsubmit="return checkValue()">                
 			            <table>
 			            	<!-- 필수 정보 입력 -->
 			            	<!-- 아이디,비번,이름,성별,생년월일,이메일,폰번호 순서 -->
 			                <tr>
 			                    <td id="title">아이디</td>
 			                    <td>
-			                        <input type="text" name="memId" maxlength="20" />
-			                        <input type="button" value="중복확인" onclick="idChk()" /> 
+			                        <input type="text" id="memId" value="${memId }" maxlength="20" />
+			                        <button id="idChk">중복확인</button> 
 			                    </td>
 			                </tr>
 			                        
@@ -73,9 +72,8 @@
 			                </tr>
 			            </table>
 			            <br>
-						<input class="addbtn" type="submit" value="가입"/>  
+						<input class="addbtn" type="button" value="가입" onclick="checkValue()">  
 						<input class="addbtn" type="button" value="취소" onclick="goMain()">
-			        </form>
 			        </div>
 	   	 			</div>  
 					<!-- main contents End -->

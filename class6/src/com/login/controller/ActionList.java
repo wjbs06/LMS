@@ -1,6 +1,7 @@
 package com.login.controller;
 
 import com.login.action.Action;
+import com.login.action.Add;
 import com.login.action.AddForm;
 import com.login.action.LoginAction;
 import com.login.action.Logout;
@@ -27,6 +28,8 @@ public class ActionList {
 			action=new LoginAction();
 		}else if(list.equals("Logout")){//로그아웃 페이지
 			action=new Logout();
+		}else if(list.equals("Add")){//로그아웃 페이지
+			action=new Add();
 		}
 		return action;
 	}

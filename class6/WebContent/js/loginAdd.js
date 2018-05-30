@@ -1,74 +1,159 @@
 //AddForm.jsp
-        // ÇÊ¼ö ÀÔ·Â Á¤º¸°¡ ÀÔ·ÂµÇ¾ú´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö(¾ÆÀÌµğ Áßº¹, À¯È¿¼º °Ë»ç µî)
-        // checkValue ½ÃÀÛ
-        function checkValue()
-        {
-        	var form = document.memInfo;
-            
-            if(!form.memId.value){
-                alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-                return false;
-            }
-            
-            if(form.idDupl.value != "idCheck"){
-                alert("¾ÆÀÌµğ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä.");
-                return false;
-            }
-            
-            if(!form.memPw.value){
-                alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-                return false;
-            }
-            
-            if(!form.memName.value){
-                alert("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.");
-                return false;
-            }
-            
-            if(!form.memBirth.value){
-                alert("»ı³â¿ùÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
-                return false;
-            }
-            
-            if(isNaN(form.memBirth.value)){
-                alert("»ı³â¿ùÀÏÀº ¼ıÀÚ¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
-                return false;
-            }
-           
-            if(!form.memMail1.value){
-                alert("¸ŞÀÏ ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-                return false;
-            }
-            
-                        
-            if(!form.memPnum.value){
-                alert("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-                return false;
-            }
-            
-            if(isNaN(form.memPnum.value)){
-                alert("ÀüÈ­¹øÈ£´Â - Á¦¿ÜÇÑ ¼ıÀÚ¸¸ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-                return false;
-            }
-
-        }// checkValue ³¡
-        
-        // Ãë¼Ò ¹öÆ° Å¬¸¯½Ã ·Î±×ÀÎ È­¸éÀ¸·Î ÀÌµ¿
-        function goMain() {
-        	location.href="../user/index.com";
-        }
+$(document).ready(function(){
 		
-        // id Áßº¹Ã¼Å© È­¸é
-        function idChk() {
-        	var id = document.memInfo.memId.value;
+		// id ì¤‘ë³µì²´í¬ í™”ë©´
+        $("#idChk").click(function(){
+        	
+        
+        	var id = $('input[id="memId"]').val();
+        	
         	if(id=="")
-        		alert("ÀÔ·ÂµÈ ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.");
-			else 
-				/* open(ÆË¾÷Ã¢ ÁÖ¼Ò, ÆË¾÷Ã¢ ÀÌ¸§, ÆË¾÷Ã¢ ¼³¸í) */
-				window.open("../Login/idChk.com?memId="+id,"chkForm", "width=500, height=300, resizable = no, scrollbars = no");
-		}
-        
-//LoginForm.jsp   
-        
-        
-        
+        		
+        		alert("ì…ë ¥ëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");
+			else{ 
+
+    		var form = document.createElement('form');
+
+    		var objs;
+
+    		objs = document.createElement('input');
+
+    		objs.setAttribute('type', 'hidden');
+
+    		objs.setAttribute('name', 'memId');
+
+    		objs.setAttribute('value', $('input[id="memId"]').val());
+    		
+    		form.appendChild(objs);
+
+    		form.setAttribute('method', 'post');
+
+    		form.setAttribute('action', "../Login/idChk.com");
+
+    		document.body.appendChild(form);
+
+    		form.submit();
+			}
+        });
+});	 
+			//í•„ìˆ˜ ì…ë ¥ ì •ë³´ê°€ ì…ë ¥ë˜ì—ˆëŠ”ì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜(ì•„ì´ë”” ì¤‘ë³µ, ìœ íš¨ì„± ê²€ì‚¬ ë“±)
+			// checkValue ì‹œì‘
+			
+			
+			// ì·¨ì†Œ ë²„íŠ¼ í´ë¦­ì‹œ ë¡œê·¸ì¸ í™”ë©´ìœ¼ë¡œ ì´ë™
+			function goMain() {
+				location.href="../user/index.com";
+			}
+
+			
+			function goLogin() {
+				location.href="../Login/LoginForm.com";
+			}
+			
+			
+        	function checkValue()
+            {
+                
+                if(!$('input[id="memId"]').val()){
+                    alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+                    return false;
+                }
+                
+                /*if(form.idDupl.value != "idCheck"){
+                    alert("ì•„ì´ë”” ì¤‘ë³µì²´í¬ë¥¼ í•´ì£¼ì„¸ìš”.");
+                    return false;
+                }*/
+                
+                if(!$('input[name="memPw"]').val()){
+                    alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+                    return false;
+                }
+                
+                if(!$('input[name="memName"]').val()){
+                    alert("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.");
+                    return false;
+                }
+                
+                if(!$('input[name="memBirth"]').val()){
+                    alert("ìƒë…„ì›”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”.");
+                    return false;
+                }
+                
+                if(isNaN($('input[name="memBirth"]').val())){
+                    alert("ìƒë…„ì›”ì¼ì€ ìˆ«ìë§Œ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+                    return false;
+                }
+               
+                if(!$('input[name="memMail"]').val()){
+                    alert("ë©”ì¼ ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+                    return false;
+                }
+                
+                            
+                if(!$('input[name="memPnum"]').val()){
+                    alert("ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+                    return false;
+                }
+                
+                if(isNaN($('input[name="memPnum"]').val())){
+                    alert("ì „í™”ë²ˆí˜¸ëŠ” - ì œì™¸í•œ ìˆ«ìë§Œ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+                    return false;
+                }
+                
+                //ì´ìƒì—†ìœ¼ë©´ íšŒì›ê°€ì… ë‚´ìš© ì „ì†¡
+                location.href="../Login/Add.com";
+                
+                
+                var form = document.createElement('form');
+
+        		var obj1,obj2,obj3,obj4,obj5,obj6,obj7;
+
+        		obj1 = document.createElement('input');
+        		obj1.setAttribute('type', 'hidden');
+        		obj1.setAttribute('name', 'memId');
+        		obj1.setAttribute('value', $('input[id="memId"]').val());
+        		
+        		obj2 = document.createElement('input');
+        		obj2.setAttribute('type', 'hidden');
+        		obj2.setAttribute('name', 'memPw');
+        		obj2.setAttribute('value', $('input[name="memPw"]').val());
+        		
+        		obj3 = document.createElement('input');
+        		obj3.setAttribute('type', 'hidden');
+        		obj3.setAttribute('name', 'memName');
+        		obj3.setAttribute('value', $('input[name="memName"]').val());
+        		
+        		obj4 = document.createElement('input');
+        		obj4.setAttribute('type', 'hidden');
+        		obj4.setAttribute('name', 'memGen');
+        		obj4.setAttribute('value', $('input[name="memGen"]').val());
+        		
+        		obj5 = document.createElement('input');
+        		obj5.setAttribute('type', 'hidden');
+        		obj5.setAttribute('name', 'memBirth');
+        		obj5.setAttribute('value', $('input[name="memBirth"]').val());
+        		
+        		obj6 = document.createElement('input');
+        		obj6.setAttribute('type', 'hidden');
+        		obj6.setAttribute('name', 'memMail');
+        		obj6.setAttribute('value', $('input[name="memMail"]').val());
+        		
+        		obj7 = document.createElement('input');
+        		obj7.setAttribute('type', 'hidden');
+        		obj7.setAttribute('name', 'memPnum');
+        		obj7.setAttribute('value', $('input[name="memPnum"]').val());
+        		
+        		
+        		form.appendChild(obj1).appendChild(obj2).appendChild(obj3).appendChild(obj4).appendChild(obj5).appendChild(obj6).appendChild(obj7);
+
+        		form.setAttribute('method', 'post');
+
+        		form.setAttribute('action', "../Login/Add.com");
+
+        		document.body.appendChild(form);
+
+        		form.submit();
+                
+
+            }// checkValue ë
+

@@ -1,4 +1,3 @@
-
 //LoginForm.jsp   
         
         
@@ -7,26 +6,24 @@
             addMem = eval("document.loginInfo");
             if(!addMem.memId.value)
             {
-                alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä");    
+                alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”");    
                 addMem.memId.focus();
                 return false;
             }
             if(!addMem.memPw.value)
             {
-                alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");    
+                alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");    
                 addMem.memPw.focus();
                 return false;
             }
         }
     
-        // È¸¿ø°¡ÀÔ ¹öÆ° Å¬¸¯½Ã È¸¿ø°¡ÀÔ È­¸éÀ¸·Î ÀÌµ¿
+        // íšŒì›ê°€ì… ë²„íŠ¼ í´ë¦­ì‹œ íšŒì›ê°€ì… í™”ë©´ìœ¼ë¡œ ì´ë™
         function goAddForm() {
             location.href="../Login/AddForm.com";
         }    
         
-        // ¾ÆÀÌµğ, ºñ¹Ğ¹øÈ£ Ã£±â Å¬¸¯½Ã Ã£´Â id/pw Ã£´Â ÆäÀÌÁö·Î ÀÌµ¿
+        // ì•„ì´ë””, ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° í´ë¦­ì‹œ ì°¾ëŠ” id/pw ì°¾ëŠ” í˜ì´ì§€ë¡œ ì´ë™
         function goFindform() {
 			location.href="../Login/findForm.com";
 		}
-        
-        

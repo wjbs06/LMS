@@ -1,6 +1,8 @@
 package com.login.model.DAO;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import util.DB;
@@ -10,13 +12,11 @@ import com.login.model.DTO.memDTO;
 public class memDAO //회원가입 및 검사 DAO
 {
 	
-	private static memDAO instance;
-	
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private memDTO member,mem;
-	private StringBuffer sb1,sb2;
+	private String sql1,sql2;
     
     // 싱글톤 패턴
    /* private memDAO(){}
@@ -32,11 +32,28 @@ public class memDAO //회원가입 및 검사 DAO
     // Oracle의 date형식과 연동되는 java의 Date는 java.sql.Date 클래스
     public Date stringToDate(memDTO member)
     {
-        String birth = member.getMemBirth();
-        Date birthday = Date.valueOf(birth);
+        // 날짜가 yyyymmdd 형식으로 입력되었을 경우 Date로 변경하는 메서드
+        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
         
-        return birthday;
+        // Date로 변경하기 위해서는 날짜 형식을 yyyy-mm-dd로 변경해야 한다.
+        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
         
+        java.util.Date tempDate = null;
+        
+        try {
+            // 현재 yyyymmdd로된 날짜 형식으로 java.util.Date객체를 만든다.
+            tempDate = beforeFormat.parse(member.getMemBirth());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
+        // java.util.Date를 yyyy-mm-dd 형식으로 변경하여 String로 반환한다.
+        String transDate = afterFormat.format(tempDate);
+        
+        // 반환된 String 값을 Date로 변경한다.
+        Date d = Date.valueOf(transDate);
+        
+        return d;
     } // end stringToDate()
     
     // 로그인 체크
@@ -49,20 +66,19 @@ public class memDAO //회원가입 및 검사 DAO
  
         try {
             // 쿼리 - 먼저 입력된 아이디로 DB에서 비밀번호를 조회
-            sb1 = new StringBuffer();
-            sb1.append("SELECT MEMPW FROM MEMBER WHERE MEMID=?");
+            sql1 = "SELECT MEMPW FROM MEMBER WHERE MEMID=?";
  
             conn = DB.getConnction();
-            pstmt = conn.prepareStatement(sb1.toString());
+            pstmt = conn.prepareStatement(sql1);
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
  
-            if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
+            if (rs.next()) // 입력된 아이디에 해당하는 비번 있을경우
             {
                 dbPW = rs.getString("memPw"); // 비번을 변수에 넣는다.
  
                 if (dbPW.equals(pw)) 
-                    x = 1; // 넘겨받은 비번과 꺼내온 배번 비교. 같으면 인증성공
+                    x = 1; // 넘겨받은 비번과 꺼내온 비번 비교. 같으면 인증성공
                 else                  
                     x = 0; // DB의 비밀번호와 입력받은 비밀번호가 다르면, 인증실패
                 
@@ -86,60 +102,60 @@ public class memDAO //회원가입 및 검사 DAO
 	
     
 	
-	// 회원 정보 목록 가져옴
-	public ArrayList<memDTO> getMemList() {
-		ArrayList<memDTO> memberList = new ArrayList<memDTO>();
-        
-        try {
-            sb1 = new StringBuffer();
-            sb1.append("SELECT * FROM MEMBER");
-            
-            conn = DB.getConnction();
-            pstmt = conn.prepareStatement(sb1.toString());
-            rs = pstmt.executeQuery();
-            
-            while (rs.next()) 
-            {
-                member = new memDTO();
-                member.setMemId(rs.getString("memId"));
-                member.setMemPw(rs.getString("memPw"));
-                member.setMemName(rs.getString("memName"));
-                member.setMemGen(rs.getString("memGen"));
-                member.setMemBirth(rs.getDate("memBirth").toString());
-                member.setMemMail(rs.getString("memMail"));
-                member.setMemPnum(Integer.parseInt(rs.getString("memPnum")));
-                
-                memberList.add(member);
-            }
-            
-            return memberList;
-            
-        } catch (Exception sqle) {
-            throw new RuntimeException(sqle.getMessage());
-        } finally {
-            // Connection, PreparedStatement를 닫는다.
-            try{
-                if ( pstmt != null ){ pstmt.close(); pstmt=null; }
-                if ( conn != null ){ conn.close(); conn=null; }
-            }catch(Exception e){
-                throw new RuntimeException(e.getMessage());
-            }
-        }
-    } // end getMemList
+ // 회원 정보 목록 가져옴( X )
+ 	public ArrayList<memDTO> getMemList() {
+ 		ArrayList<memDTO> memberList = new ArrayList<memDTO>();
+         
+         try {
+         	
+             sql1 = "SELECT MEMID, MEMPW FROM MEMBER";
+             sql2 = "SELECT * FROM PRIVACY";
+             
+             conn = DB.getConnction();
+             pstmt = conn.prepareStatement(sql1.toString());
+             rs = pstmt.executeQuery();
+             
+             while (rs.next()) 
+             {
+                 member = new memDTO();
+                 member.setMemId(rs.getString("memId"));
+                 member.setMemPw(rs.getString("memPw"));
+                 member.setMemName(rs.getString("memName"));
+                 member.setMemGen(rs.getString("memGen"));
+                 member.setMemBirth(rs.getDate("memBirth").toString());
+                 member.setMemMail(rs.getString("memMail"));
+                 member.setMemPnum(Integer.parseInt(rs.getString("memPnum")));
+                 
+                 memberList.add(member);
+             }
+             
+             return memberList;
+             
+         } catch (Exception sqle) {
+             throw new RuntimeException(sqle.getMessage());
+         } finally {
+             // Connection, PreparedStatement를 닫는다.
+             try{
+                 if ( pstmt != null ){ pstmt.close(); pstmt=null; }
+                 if ( conn != null ){ conn.close(); conn=null; }
+             }catch(Exception e){
+                 throw new RuntimeException(e.getMessage());
+             }
+         }
+     } // end getMemList
 
 	// 아이디 중복 검사
-	public boolean idChk(String id) {
-
+	public boolean idChk(String memId) {
+		
 		boolean x= false;
         
         try {
             // 쿼리
-            sb1 = new StringBuffer();
-            sb1.append("SELECT MEMID FROM MEMBER WHERE MEMID=?");
+            String sql = "SELECT * FROM MEMBER WHERE MEMID=?";
                         
             conn = DB.getConnction();
-            pstmt = conn.prepareStatement(sb1.toString());
-            pstmt.setString(1, id);
+            pstmt = conn.prepareStatement(sql.toString());
+            pstmt.setString(1, memId);            
             rs = pstmt.executeQuery();
             
             if(rs.next())
@@ -158,65 +174,78 @@ public class memDAO //회원가입 및 검사 DAO
                 throw new RuntimeException(e.getMessage());
             }
         }
-    } // end duplicateIdCheck()
+    } // end idChk()
 	
 	// 회원 정보 입력(회원 가입)
-	public int addMem(memDTO member) throws SQLException {
-        
-        try {
-            // 커넥션을 가져온다.
-            conn = DB.getConnction();
-            
-            // 자동 커밋을 false로 한다.
-            conn.setAutoCommit(false);
-            
-            // 쿼리 생성
-            // 가입일의 경우 자동으로 세팅되게 하기 위해 sysdate를 사용
-            sb1 = new StringBuffer();
-            sb1.append("INSERT INTO MEMBER ");
-            // sb1.append("INSERT INTO MEMBER (memId,memPw,memName,memGen,memBirth,memMail,memPnum,memIpD)");
-            sb1.append("VALUES (?, ?, ?, ?, ?, ?, ?, SYSDATE)");        
-            stringToDate(member);
+		public void addMem(memDTO member) throws SQLException {
+	        String sql1=null;
+	        String sql2=null;
+	        System.out.println("addMem 실행");
+	        try {
+	            // 커넥션을 가져온다.
+	            conn = DB.getConnction();
+	            
+	            // 자동 커밋을 false로 한다.
+	            conn.setAutoCommit(false);
+	            
+	            // 쿼리 생성
+	            // 작성일의 경우 자동으로 세팅되게 하기 위해 sysdate를 사용
+	            sql1 = "INSERT INTO MEMBER VALUES (?, ?, ?, sysdate, '')";
+	            // ('abc',1234,'학생',sysdate,'');
+	            
+	            sql2 = "INSERT INTO PRIVACY VALUES (?, privacy_seq.nextval, '', ?, ?, ?, ?, ?)";
+	            // ('abc',privacy_seq.nextval,1,'학생이름','남',sysdate,'abc@gamil.com',01012345678);
+	            Date date=stringToDate(member);
 
-            // StringBuffer에 담긴 값을 얻으려면 toString()메서드를 사용해야 함
-            pstmt = conn.prepareStatement(sb1.toString());
-            pstmt.setString(1, member.getMemId());
-            pstmt.setString(2, member.getMemPw());
-            pstmt.setString(3, member.getMemName());
-            pstmt.setString(4, member.getMemGen());
-            pstmt.setString(5, member.getMemBirth());
-            pstmt.setString(6, member.getMemMail());
-            pstmt.setInt(7, member.getMemPnum());
-            pstmt.setDate(8, stringToDate(member));
-            
-            // 쿼리 실행
-            pstmt.executeUpdate();
-            // 완료시 커밋
-            conn.commit(); 
-            
-        } catch (SQLException e) {
-            // 오류시 롤백
-            conn.rollback();             
-            throw new RuntimeException(e.getMessage());
-        } catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} finally {
-            // Connection, PreparedStatement를 닫는다.
-            try{
-                if ( pstmt != null ){ pstmt.close(); pstmt=null; }
-                if ( conn != null ){ conn.close(); conn=null;    }
-            }catch(Exception e){
-                throw new RuntimeException(e.getMessage());
-            }
-        } 
-		return 0;
-    }// end addMem
+	            // 회원 정보 (아이디, 패스워드)
+	            // StringBuffer에 담긴 값을 얻으려면 toString()메서드를 사용해야 함
+	            pstmt = conn.prepareStatement(sql1.toString());
+	            pstmt.setString(1, member.getMemId());
+	            pstmt.setString(2, member.getMemPw());
+	            pstmt.setString(3, "학생");
+	           
+	            // 쿼리 실행
+	            pstmt.executeUpdate();
+	            // 완료시 커밋
+	            conn.commit(); 
+	            
+	            // privacy (개인 상세 정보)
+	            pstmt = conn.prepareStatement(sql2.toString());
+	            pstmt.setString(1, member.getMemId());
+	            pstmt.setString(2, member.getMemName());
+	            pstmt.setString(3, member.getMemGen());
+	            pstmt.setDate(4, date);
+	            pstmt.setString(5, member.getMemMail());
+	            pstmt.setInt(6, member.getMemPnum());
+	            
+	            // 쿼리 실행
+	            pstmt.executeUpdate();
+	            
+	            // 완료시 커밋
+	            conn.commit(); 
+	            
+	        } catch (SQLException e) {
+	            // 오류시 롤백
+	            conn.rollback();             
+	            throw new RuntimeException(e.getMessage());
+	        } catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} finally {
+	            // Connection, PreparedStatement를 닫는다.
+	            try{
+	                if ( pstmt != null ){ pstmt.close(); pstmt=null; }
+	                if ( conn != null ){ conn.close(); conn=null; }
+	            }catch(Exception e){
+	                throw new RuntimeException(e.getMessage());
+	            }
+	        } 
+	    }// end addMem
 	
-	// 아이디 찾기
+	/*// 아이디 찾기
 	public memDTO findId(String name, String mail) {
 			
 		try {
-			mem = new memDTO();
+			member = new memDTO();
 			
 			conn=DB.getConnction();
 			
@@ -231,7 +260,6 @@ public class memDAO //회원가입 및 검사 DAO
 			if(rs.next()){
 				member = new memDTO();
                 member.setMemId(rs.getString("memId"));
-                mem = member;
 			}
 			
 		} catch (Exception e) {
@@ -252,7 +280,7 @@ public class memDAO //회원가입 및 검사 DAO
 	public memDTO findPw(String id, String name, String mail) {
 			
 		try {
-			mem = new memDTO();
+			member = new memDTO();
 			
 			conn=DB.getConnction();
 			
@@ -268,7 +296,6 @@ public class memDAO //회원가입 및 검사 DAO
 			if(rs.next()){
 				member = new memDTO();
                 member.setMemPw(rs.getString("memPw"));
-                mem = member;
 			}
 			
 		} catch (Exception e) {
@@ -284,5 +311,5 @@ public class memDAO //회원가입 및 검사 DAO
 		}
 		return null;
 	}// end findPw
-
+*/
 }// end memDAO
