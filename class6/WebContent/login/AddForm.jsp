@@ -5,6 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Class6-LMS</title>
+			<link href="${subpath}/css/login.css" rel="stylesheet" type="text/css">
 			<script type="text/javascript" src="${subpath }/js/loginAdd.js"></script>
 			<jsp:include page="${subpath }/layout/Header.jsp" /> 
 				<div class="main" style="overflow: auto" >
@@ -12,9 +13,9 @@
 					<br><br>
 			        <b><font size="6" color="gray">회원가입</font></b>
 			        <br><br><br>
-			        
 			        <!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
 			        <!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 memAddJoin.jsp -->
+			        <div style="margin: 0px 345px;">
 			        <form method="post" action="./Add.jsp" name="memInfo" onsubmit="return checkValue()">                
 			            <table>
 			            	<!-- 필수 정보 입력 -->
@@ -72,9 +73,10 @@
 			                </tr>
 			            </table>
 			            <br>
-						<input type="submit" value="가입"/>  
-						<input type="button" value="취소" onclick="goMain()">
+						<input class="addbtn" type="submit" value="가입"/>  
+						<input class="addbtn" type="button" value="취소" onclick="goMain()">
 			        </form>
+			        </div>
 	   	 			</div>  
 					<!-- main contents End -->
 				<!-- </div>	 -->				

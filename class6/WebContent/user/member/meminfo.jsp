@@ -10,7 +10,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>class6-LMS</title>
-		<link href="../css/member.css" rel="stylesheet" type="text/css">
+		<link href="${subpath}/css/member.css" rel="stylesheet" type="text/css">
 		<jsp:include page="${realpath }/layout/Header.jsp" />
 		<script type="text/javascript" src="${subpath }/js/memInfo.js"></script>
 				<div class="main" style="overflow: auto">
@@ -49,8 +49,8 @@
 			        </table>
 			        <br>
 			        <div class="btnBox">
-				        <button name="">수정</button>
-				        <button name="back">뒤로</button>
+				        <button class="btn" name="">수정</button>
+				        <button class="btn" name="back">뒤로</button>
 			        </div>
 		      		</c:forEach>
 				</div>
