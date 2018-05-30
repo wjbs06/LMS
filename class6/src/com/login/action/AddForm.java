@@ -16,6 +16,7 @@ public class AddForm implements Action {//회원가입 페이지 미완성
 		// TODO Auto-generated method stub
 		String url="../login/AddForm.jsp";
 		
+		
 		String realpath="../..";
 		String subpath="..";
 		request.setAttribute("realpath",realpath );

@@ -48,8 +48,10 @@
 			            </tr>
 			        </table>
 			        <br>
-			        <button name="">수정</button>
-			        <button name="back">뒤로</button>
+			        <div class="btnBox">
+				        <button name="">수정</button>
+				        <button name="back">뒤로</button>
+			        </div>
 		      		</c:forEach>
 				</div>
 				<jsp:include page="${realpath }/layout/Footer.jsp" />

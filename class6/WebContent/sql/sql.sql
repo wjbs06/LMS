@@ -71,7 +71,7 @@ CREATE TABLE lechure (
 	lecEnd DATE NOT NULL, /* 강의종료일 */
 	lecCon LONG, /* 강의설명 */
 	teaId VARCHAR2(20) NOT NULL, /* 강사 */
-	classNo NUMBER NOT NULL, /* 강의장 */
+	classAdress VARCHAR2(40) NOT NULL, /* 강의장위치 */
 	classNum NUMBER, /* 수강인원 */
 	lecIpD DATE NOT NULL, /* 입력일시 */
 	lecIpN VARCHAR2(20) NOT NULL /* 입력자 */
@@ -160,7 +160,7 @@ ALTER TABLE chk
 CREATE TABLE class (
 	classNo NUMBER NOT NULL, /* 강의장번호 */
 	className VARCHAR2(40) NOT NULL, /* 강의장명 */
-	classAddress VARCHAR2(40), /* 강의장위치 */
+	classAddress VARCHAR2(20), /* 강의장위치 */
 	classIpD DATE NOT NULL, /* 입력일시 */
 	classIpN VARCHAR2(20) NOT NULL /* 입력자 */
 );
@@ -274,7 +274,7 @@ CREATE TABLE privacy (
 	lecNo NUMBER, /* 강의번호 */
 	memName VARCHAR2(40) NOT NULL, /* 이름 */
 	memGen VARCHAR2(4) NOT NULL, /* 성별 */
-	memBirth DATE NOT NULL, /* 생년월일 */
+	memBrith DATE NOT NULL, /* 생년월일 */
 	memMail VARCHAR2(40) NOT NULL, /* 이메일 */
 	memPnum NUMBER(11,0) NOT NULL /* 전화번호 */
 );
@@ -309,16 +309,6 @@ ALTER TABLE lechure
 		)
 		REFERENCES member (
 			memId
-		);
-
-ALTER TABLE lechure
-	ADD
-		CONSTRAINT FK_class_TO_lechure
-		FOREIGN KEY (
-			classNo
-		)
-		REFERENCES class (
-			classNo
 		);
 
 ALTER TABLE bbsMem
@@ -480,7 +470,7 @@ insert into member values('T1',1234,'강사',sysdate,'E1');
 insert into class values(1,'자바강의장','6강의장',sysdate,'E1');
 
 /* 강의 */
-insert into lechure values(1,'자바',sysdate,sysdate,'강의내용','T1',1,20,sysdate,'E1');
+insert into lechure values(1,'자바',sysdate,sysdate,'강의내용','T1','6강의장',20,sysdate,'E1');
 
 /* 회원 */
 insert into member values('abc',1234,'학생',sysdate,'');

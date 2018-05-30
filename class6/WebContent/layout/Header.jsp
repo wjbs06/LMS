@@ -31,7 +31,10 @@
 		        	'margin-right' : "10px"
 		        });
 			}
-			//로그인후
+			$('#Logout').click(function(){
+				location.href = "../Login/Logout.com";
+			});
+			
 		});
 		</script>
 	

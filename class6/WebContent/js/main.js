@@ -50,11 +50,6 @@ $(document).ready(function(){
 		 location.href = "../Login/AddForm.com";
 	});
 	
-	//로그인후
-	$('#Logout').click(function(){
-		location.href = "../Login/Logout.com";
-	});
-	
 	//mypage 이동
 	$("#mypage").click(function(){
 
