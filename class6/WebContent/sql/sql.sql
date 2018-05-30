@@ -160,7 +160,7 @@ ALTER TABLE chk
 CREATE TABLE class (
 	classNo NUMBER NOT NULL, /* 강의장번호 */
 	className VARCHAR2(40) NOT NULL, /* 강의장명 */
-	classAddress VARCHAR2(20), /* 강의장위치 */
+	classAddress VARCHAR2(40), /* 강의장위치 */
 	classIpD DATE NOT NULL, /* 입력일시 */
 	classIpN VARCHAR2(20) NOT NULL /* 입력자 */
 );

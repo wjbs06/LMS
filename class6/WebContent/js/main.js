@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	$('.menu2').mouseover(function(){
 		$('.bitbutton').css("background", "rgba(255, 255, 255, 0.28)");

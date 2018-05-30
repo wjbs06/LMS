@@ -85,14 +85,6 @@
 	%>
 	<div class="container">
 			<jsp:include page="${subpath }/layout/Header.jsp" />
-			<div class="page">
-				<div class="top">
-					<!-- 상단 로그인 -->
-					<div class="login">
-						<button class="memberLogin" id="Add">회원가입</button>
-						<button class="memberLogin" id="Login">로그인</button>
-					</div>
-				</div>
 				<div class="main" style="overflow: auto">
 				<div style="margin: 40px 345px;">
 				<!-- 본문 시작  -->

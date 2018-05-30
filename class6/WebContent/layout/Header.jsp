@@ -15,6 +15,26 @@
 		</style>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			//로그인후
+			if ($("label[name=id]").text() != "") {
+				$(".login").remove();
+				$('.top').prepend("<div></div>").children().first().attr({
+		            class : "logout",
+		            id : "out"
+		        }).append("<button>로그아웃</button>").children().first().attr({
+		            class : "memberLogin",
+		            id : "Logout"
+		        }).after("<label>님 환영합니다</label>").css({
+		        	'float' : "right",
+		        	'margin-right' : "10px"
+		        });
+			}
+			//로그인후
+		});
+		</script>
+	
 	</head>	
 	<body>
 		<div class="container">
@@ -96,10 +116,9 @@
 			<div class="page">
 				<div class="top">
 					<!-- 상단 로그인 -->
-					<div class="logout">
+					<div class="login">
+						<button class="memberLogin" id="Add">회원가입</button>
 						<button class="memberLogin" id="Login">로그인</button>
-						<button class="memberLogin" id="Logout">로그아웃</button>
-						<label style="float: right;margin-right: 10px;">님 환영합니다</label>
-						<label name="id" style="float: right;">${sessionID }</label>
 					</div>
+					<label name="id" style="float: right;margin: 4px 4px 0px 0px;">${sessionID }</label>
 				</div>

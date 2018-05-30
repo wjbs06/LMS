@@ -10,7 +10,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>class6-LMS</title>
-		<link href="../css/memInfo.css" rel="stylesheet" type="text/css">
+		<link href="../css/member.css" rel="stylesheet" type="text/css">
 		<jsp:include page="${realpath }/layout/Header.jsp" />
 		<script type="text/javascript" src="${subpath }/js/memInfo.js"></script>
 				<div class="main" style="overflow: auto">
