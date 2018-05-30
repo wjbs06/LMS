@@ -49,7 +49,7 @@
 			        </table>
 			        <br>
 			        <div class="btnBox">
-				        <button class="btn" name="">수정</button>
+				        <button class="btn" name="submit">수정</button>
 				        <button class="btn" name="back">뒤로</button>
 			        </div>
 		      		</c:forEach>

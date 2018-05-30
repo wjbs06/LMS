@@ -11,6 +11,7 @@ import com.user.action.LecIntro;
 import com.user.action.main;
 import com.user.action.memBbs;
 import com.user.action.memBbsD;
+import com.user.action.memChange;
 import com.user.action.memInfo;
 import com.user.action.mypage;
 import com.user.action.tea;
@@ -48,6 +49,8 @@ public class ActionList {
 			action=new mypage();
 		}else if(list.equals("memInfo")){//mypage
 			action=new memInfo();
+		}else if(list.equals("memChange")){//mypage
+			action=new memChange();
 		}else if(list.equals("memBbs")){//mypage
 			action=new memBbs();
 		}else if(list.equals("memBbsD")){//mypage
