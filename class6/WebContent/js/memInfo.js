@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	$("button[name=submit]").click(function(){
-		location.href="../user/memChange.com";
+	$('#subm').click(function(){
+		//location.href="../user/memUpdate.com";
 		
 		var form = document.createElement('form');
 
@@ -18,7 +18,7 @@ $(document).ready(function(){
 
 		form.setAttribute('method', 'post');
 
-		form.setAttribute('action', "../user/memChange.com");
+		form.setAttribute('action', "../user/memUpdate.com");
 
 		document.body.appendChild(form);
 

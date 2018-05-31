@@ -8,24 +8,15 @@
 </head>
 	<script type="text/javascript">
 		function goLogin() {
-			location.href="LoginForm.jsp";
+			location.href="../Login/LoginForm.com";
 		}
 	</script>
 <body>
-	<div class="container">
 			<jsp:include page="${subpath }/layout/Header.jsp" />
-			<div class="page">
-				<div class="top">
-					<!-- 상단 로그인 -->
-					<div class="login">
-						<button class="memberLogin" id="Add">회원가입</button>
-						<button class="memberLogin" id="Login">로그인</button>
-					</div>
-				</div>
 				<div class="main" style="overflow: auto">
 				<div style="margin: 141px 350px;">
 				
-		        <form method="post" action="findId.jsp">
+		        <form method="post" action="../Login/idFind.com">
 				<table>
 					<tr>
 						<td>아이디 찾기</td>
@@ -51,7 +42,7 @@
 				</table>
 				</form>
 					
-				<form method="post" action="findPw.jsp">
+				<form method="post" action="../Login/pwFind.com">
 					<table>
 						<tr>
 							<td>비밀번호 찾기</td>
@@ -83,9 +74,6 @@
 	        	
 	     	  	</div> 
    	 			</div>    				
-				<jsp:include page="${subpath }/layout/Footer.jsp" />
-			</div>
-		</div>
-	
+			<jsp:include page="${subpath }/layout/Footer.jsp" />
 </body>
 </html>

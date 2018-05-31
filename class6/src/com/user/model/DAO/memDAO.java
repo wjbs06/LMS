@@ -1,6 +1,7 @@
 package com.user.model.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -90,7 +91,7 @@ public class memDAO {//mypage DAO
 	    	String sql="SELECT * FROM PRIVACY WHERE MEMID=?";
 	    	
 	    	List<memDTO> list = new ArrayList<memDTO>();
-	    	memDTO mDTO = new memDTO();
+	    	memDTO dto = new memDTO();
 			try {
 				try{
 					conn=DB.getConnction();
@@ -100,20 +101,29 @@ public class memDAO {//mypage DAO
 					e.printStackTrace();
 				}
 
-				//출석에 대한 내용
+				//회원정보
 				pstmt=conn.prepareStatement(sql);
 				pstmt.setString(1, memId);
 				rs=pstmt.executeQuery();
 				if(rs.next()){
-					mDTO.setMemId(rs.getString("memId"));
-					mDTO.setMemName(rs.getString("memName"));
-					mDTO.setMemGen(rs.getString("memGen"));
-					mDTO.setMemBirth(rs.getDate("memBirth"));
-					mDTO.setMemMail(rs.getString("memMail"));
-					mDTO.setMemPnum(rs.getInt("memPnum"));
+					dto.setMemId(rs.getString("memId"));
+					dto.setMemName(rs.getString("memName"));
+					dto.setMemGen(rs.getString("memGen"));
+					dto.setMemBirth(rs.getDate("memBirth"));
+					dto.setMemMail(rs.getString("memMail"));
+					dto.setMemPnum(rs.getInt("memPnum"));
 				}
 				
-				list.add(mDTO);
+				//회원정보(비밀번호)
+				String sql2="SELECT MEMPW FROM MEMBER WHERE MEMID=?";
+				pstmt=conn.prepareStatement(sql2);
+				pstmt.setString(1, memId);
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+					dto.setMemPw(rs.getString("memPw"));
+				}
+				
+				list.add(dto);
 				//conn.commit();
 			}catch(SQLException e){
 				//conn.rollback();
@@ -126,28 +136,71 @@ public class memDAO {//mypage DAO
 			
 			System.out.println("완료");
 			return list;
-			}
 	    }// end getUserInfo
-	    
-	    /*// 회원 정보 수정
-		public void updateMem(memDTO member) throws SQLException {
+
+
+		//출석체크
+		public void putChk(String memId) throws SQLException {
+			System.out.println("출석체크 시작");
+			int result = 0;
+			String sql="INSERT INTO CHK VALUES(CHK_SEQ.NEXTVAL,?,SYSDATE,'','')";
+			
+			memDTO mDTO = new memDTO();
+			try {
+				try{
+					conn=DB.getConnction();
+					//conn=db.getConnction();
+				}catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
+				//출석에 대한 내용
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, memId);
+				result=pstmt.executeUpdate();
+				
+				//conn.commit();
+			}catch(SQLException e){
+				//conn.rollback();
+			}finally{
+				conn.setAutoCommit(true);
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			}
+			System.out.println("출석완료");
+			}
+		//출석체크
+
+
+	    // 회원 정보 수정
+		public void update(memDTO member,Date d) throws SQLException {
 
 			try {
 
-				sb1 = new StringBuffer();
-				sb1.append("UPDATE MEMBER SET MEMPW=?, MEMMAIL=?, MEMPNUM=? WHERE MEMID=?");
-
+				String sql1="UPDATE MEMBER SET MEMPW=? WHERE MEMID=?";
+				String sql2="UPDATE PRIVACY SET MEMNAME=?,MEMGEN=?,MEMBIRTH=?, MEMMAIL=?,MEMPNUM=? WHERE MEMID=?";
+				
 				conn = DB.getConnction();
-				pstmt = conn.prepareStatement(sb1.toString());
+				pstmt = conn.prepareStatement(sql1);
 
 				// 자동 커밋을 false로
 				conn.setAutoCommit(false);
 				
 				pstmt.setString(1, member.getMemPw());
-				pstmt.setString(2, member.getMemMail());
-				pstmt.setInt(3, member.getMemPnum());
-				pstmt.setString(4, member.getMemId());
+				pstmt.setString(2, member.getMemId());
 
+				pstmt.executeUpdate();
+				
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, member.getMemName());
+				pstmt.setString(2, member.getMemGen());
+				pstmt.setDate(3, d);
+				pstmt.setString(4, member.getMemMail());
+				pstmt.setInt(5, member.getMemPnum());
+				pstmt.setString(6, member.getMemId());
+				
 				pstmt.executeUpdate();
 				// 완료시 커밋
 				conn.commit(); 
@@ -164,7 +217,7 @@ public class memDAO {//mypage DAO
 				}
 			}		
 		}// end updateMem
-		
+		/*
 		// 회원 정보 삭제	 
 		public int delMem(String id, String pw) {
 
@@ -223,6 +276,5 @@ public class memDAO {//mypage DAO
 					throw new RuntimeException(e.getMessage());
 				}
 			}
-		}// end delMem
+		}// end delMem*/
 }
-*/

@@ -13,15 +13,16 @@ import com.user.model.DAO.memDAO;
 import com.user.model.DTO.memDTO;
 
 
-public class memInfo implements Action {//mypage 
+public class memUpdate implements Action {//mypage 
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url="../user/member/meminfo.jsp";
+		String url="../user/member/UpdateForm.jsp";
+		
 		String memId=request.getParameter("id");
 		
-		System.out.println("myInfo에서 "+memId);
+		System.out.println("memUpdate에서 "+memId);
 		
 		memDAO dao=new memDAO();
 		List<memDTO> list=null;

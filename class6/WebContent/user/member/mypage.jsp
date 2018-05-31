@@ -11,7 +11,34 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>class6-LMS</title>
 		<jsp:include page="${realpath }/layout/Header.jsp" />
-		<script type="text/javascript" src="${subpath }/js/mypage.js"></script>
+			<script type="text/javascript" src="${subpath }/js/mypage.js"></script>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				$('button[name="chk"]').click(function(){
+					var form = document.createElement('form');
+
+					var objs;
+
+					objs = document.createElement('input');
+
+					objs.setAttribute('type', 'hidden');
+
+					objs.setAttribute('name', 'id');
+
+					objs.setAttribute('value', $('label[name="id"]').text());
+					
+					form.appendChild(objs);
+
+					form.setAttribute('method', 'post');
+
+					form.setAttribute('action', "../user/chk.com");
+
+					document.body.appendChild(form);
+
+					form.submit();
+				});
+			});
+			</script>
 				<div class="main" style="overflow: auto">
 					<!-- 메인화면 -->
 					<h2 style="float:left;">마이페이지</h2>
@@ -42,7 +69,9 @@
 							
 						</div>
 					</div>
-					<div class=memInfoBoxIn><label>출석현황</label><button>출석체크</button>
+					<div class=memInfoBoxIn>
+						<label>출석현황</label>
+						<button name="chk">출석체크</button>
 						<div class=memInfoBoxInCon>
 							<table>
 									<tr>

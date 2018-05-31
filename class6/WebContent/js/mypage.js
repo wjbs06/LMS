@@ -5,7 +5,7 @@ $(document).ready(function(){
 	$('#memInfo').click(function(){
 		location.href = "../user/memInfo.com";
 	});
-	//memInfo ÀÌµ¿
+	//memInfo ï¿½Ìµï¿½
 	$("#memInfo").click(function(){
 
 		var form = document.createElement('form');
@@ -30,5 +30,4 @@ $(document).ready(function(){
 
 		form.submit();
 	});	
-	
 });

@@ -12,12 +12,44 @@
 		<title>class6-LMS</title>
 		<link href="${subpath}/css/member.css" rel="stylesheet" type="text/css">
 		<jsp:include page="${realpath }/layout/Header.jsp" />
-		<script type="text/javascript" src="${subpath }/js/memInfo.js"></script>
+			<script type="text/javascript">
+			$(document).ready(function(){
+			$('#subm').click(function(){
+				//location.href="../user/memUpdate.com";
+				
+				var form = document.createElement('form');
+		
+				var objs;
+		
+				objs = document.createElement('input');
+		
+				objs.setAttribute('type', 'hidden');
+		
+				objs.setAttribute('name', 'id');
+		
+				objs.setAttribute('value', $('label[name="id"]').text());
+				
+				form.appendChild(objs);
+		
+				form.setAttribute('method', 'post');
+		
+				form.setAttribute('action', "../user/memUpdate.com");
+		
+				document.body.appendChild(form);
+		
+				form.submit();
+						});
+			$("button[name=back]").click(function(){
+					window.history.back();
+			});
+			
+			});
+			</script>
 				<div class="main" style="overflow: auto">
 					<!-- 메인화면 -->
-		       		<c:forEach items="${infoList }" var="list"> 
+		       		<c:forEach items="${list}" var="list"> 
 			        <h2 style="float:left;">회원정보</h2>
-			       <table class="infoBox">
+			       	<table class="infoBox">
 			            <tr>
 			                <td id="title">아이디</td>
 			                <td>${list.memId }</td>
@@ -49,7 +81,7 @@
 			        </table>
 			        <br>
 			        <div class="btnBox">
-				        <button class="btn" name="submit">수정</button>
+				        <button class="btn" id="subm">수정</button>
 				        <button class="btn" name="back">뒤로</button>
 			        </div>
 		      		</c:forEach>

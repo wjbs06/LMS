@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>    
-<%@ page import="bbs.model.bbsDTO" %>    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,43 +8,67 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link href="../css/main.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-						
-		*{
-			font-family: 'Nanum Gothic', sans-serif;
-		}
-		
-		table {
-			border-collapse: collapse;
-		}d
-		
-		table,th,td{
-			border: 1px solid gray;
-		}
-		
-		table {
-			width : 80%;
-			margin: 10px auto 50px auto;
-			/* border: 1px soid gray; */
-		
-		}
-		
-		th{
-			background-color: #cccccc;
-		}
-		
-		tr:hover{
-			background-color: #e7eae5;
-		}
+					
+	*{
+		font-family: 'Nanum Gothic', sans-serif;
+	}
 	
-		td>a{
-			display: block;
-			color:gray;
-			text-decoration: none;
-		}
+	.content>form{
+		width: 80%;
+		margin: 10px auto 50px auto;
+	}
+	
+	.content>form>div{
+	
+	}
+	
+	.content>form>div>button{
+	
+		margin: 10px 3px;
+		text-align: center;
+	}
+	
+	.content>form>div>label{
+		width: 30%;
+		text-align: center;
+		display: inline-block;
 		
+	}
+	
+	.content>form>div>input{
+		width: 50%;
+		
+	}
+	
+	.err{
+		color: red;
+		font-style: italic;
+		font-size: 9pt;
+	}
+
 </style>
-<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
+
+	//버튼 이벤트
+	$(function(){
+		$('.content>form').submit(function(){
+			$('.err').remove();
+			var result = true;
+			$('form input').each(function(idx,ele){
+				if($(ele).val()==''){
+					$(this).after('<span class="err">비었음</span>');
+					result=false;
+				}
+			});
+			return result;
+		});
+		
+		$('.content>form button').last().click(function(){
+			window.location.href='BbsList.com';
+		});
+	});
+
 
 	$(document).ready(function(){
 		$('.menu2').mouseover(function(){
@@ -91,12 +113,9 @@
 			$('.advice').css("background", "rgba(255, 255, 255, 0)");
 		});	
 	});
-
+	
 </script>	
 	</head>	
-<%
-	ArrayList<bbsDTO> list = (ArrayList<bbsDTO>)request.getAttribute("alist");
-%>	
 	<body>
 		<div class="container">
 			<div class="menuBar">
@@ -109,7 +128,7 @@
 				<div class="menu1" id="menu">
 					<!-- 메인화면버튼 -->
 					<div class="mainbutton">
-						<a href="../main/Main.jsp">메인화면</a>
+						<a href="../main/Main.com">메인화면</a>
 					</div>
 				</div>
 				<div class="menu2" id="menu">
@@ -185,37 +204,32 @@
 						<button class="memberLogin">로그인</button>
 					</div>
 				</div>
-				<div class="main" style="overflow: auto">
+				<div class="main content" style="overflow: auto">
 					<!-- main list -->
-					<h2>공지게시판 리스트 페이지</h2>
-						<table>
-							<tr>
-								<th>글번호</th>
-								<th>분류</th>
-								<th>글제목</th>
-								<th>글내용</th>
-								<th>글쓴이</th>
-								<th>날짜</th>
-								<th>조회수</th>
-								<th>수정일시</th>
-							</tr>
-							<%
-								for(int i=0; i<list.size(); i++){
-									bbsDTO bean=list.get(i);
-							%>							
-							<tr align="center">
-								<td><%=bean.getBbsNo() %></td>
-								<td><%=bean.getBbsCate() %></td>
-								<td><%=bean.getBbsName() %></td>
-								<td><%=bean.getBbsCon() %></td>
-								<td><%=bean.getBbsW() %></td>
-								<td><%=bean.getBbsDate() %></td>
-								<td><%=bean.getBbsView() %></td>
-								<td><%=bean.getBbsUdD() %></td>
-							</tr>
-							<% }%>
-						</table>					
-				</div>					
+					<h2>공지사항 입력 페이지</h2>
+					<br>
+				  <form method="post">
+					<div>
+					  <label for="bbsName">글 제 목</label>
+					  <input type="text" name="bbsName" id="bbsName"placeholder="내용을 입력해 주세요">
+					</div>
+					<br>
+					<div>
+						<label for="bbsCon">글 내 용</label>
+						<input type="text" name="bbsCon" id="bbsCon"  placeholder="내용을 입력해 주세요" style="height:200px">
+					</div>				
+					<br>
+					<div align="center">
+						<button type="submit" style="background-color:#2196F3; border: none; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer;">
+						입 력</button>
+						<button type="reset" style="background-color:#2196F3; border: none; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer;">
+						취 소</button>
+						<button type="button" style="background-color:#2196F3; border: none; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer;">
+						뒤 로</button>
+					</div>				
+				  </form>				
+				</div>	
+				<div class="clear"></div>
 				<div class="footer">
 					<!-- footer -->
 					<img src="../img/logo_foot.JPG"/>

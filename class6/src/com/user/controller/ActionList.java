@@ -8,10 +8,12 @@ import com.user.action.CompanyChart;
 import com.user.action.Intro;
 import com.user.action.Java;
 import com.user.action.LecIntro;
+import com.user.action.Update;
+import com.user.action.chk;
 import com.user.action.main;
 import com.user.action.memBbs;
 import com.user.action.memBbsD;
-import com.user.action.memChange;
+import com.user.action.memUpdate;
 import com.user.action.memInfo;
 import com.user.action.mypage;
 import com.user.action.tea;
@@ -47,14 +49,18 @@ public class ActionList {
 			action=new Android();
 		}else if(list.equals("mypage")){//mypage
 			action=new mypage();
-		}else if(list.equals("memInfo")){//mypage
+		}else if(list.equals("memInfo")){//회원정보
 			action=new memInfo();
-		}else if(list.equals("memChange")){//mypage
-			action=new memChange();
-		}else if(list.equals("memBbs")){//mypage
+		}else if(list.equals("memUpdate")){//회원정보수정화면
+			action=new memUpdate();
+		}else if(list.equals("memBbs")){//회원게시판
 			action=new memBbs();
-		}else if(list.equals("memBbsD")){//mypage
+		}else if(list.equals("memBbsD")){//회원게시판 디테일
 			action=new memBbsD();
+		}else if(list.equals("chk")){//출석체크
+			action=new chk();
+		}else if(list.equals("Update")){//출석체크
+			action=new Update();
 		}else {
 			action=new main();//기본으로 메인을 실행
 		}

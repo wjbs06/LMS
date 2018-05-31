@@ -8,14 +8,6 @@
 			<link href="${subpath}/css/login.css" rel="stylesheet" type="text/css">
 			<jsp:include page="${subpath }/layout/Header.jsp" /> 
 			<script type="text/javascript" src="${subpath }/js/loginAdd.js"></script>
-			<script type="text/javascript">
-				$(document).ready(function(){
-					if(${result}!=null){
-						if(${result}==false)
-						{$('input[id="memId"]').val("${memId}");}
-					} 
-				});
-			</script>
 				<div class="main" style="overflow: auto" >
 					<!-- main contents Start -->
 					<br><br>
@@ -30,7 +22,7 @@
 			                <tr>
 			                    <td id="title">아이디</td>
 			                    <td>
-			                        <input type="text" id="memId" maxlength="20" />
+			                        <input type="text" id="memId" value="${memId }" maxlength="20" />
 			                        <button id="idChk">중복확인</button> 
 			                    </td>
 			                </tr>

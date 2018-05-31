@@ -34,6 +34,7 @@ public class mypage implements Action {//mypage
 		}
 		
 		request.setAttribute("list", list);
+		
 		String realpath="../..";
 		String subpath="..";
 		request.setAttribute("realpath",realpath );

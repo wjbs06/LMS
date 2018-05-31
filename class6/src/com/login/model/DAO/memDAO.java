@@ -102,7 +102,7 @@ public class memDAO //회원가입 및 검사 DAO
 	
     
 	
- // 회원 정보 목록 가져옴( X )
+ // 회원 정보
  	public ArrayList<memDTO> getMemList() {
  		ArrayList<memDTO> memberList = new ArrayList<memDTO>();
          
@@ -193,7 +193,7 @@ public class memDAO //회원가입 및 검사 DAO
 	            sql1 = "INSERT INTO MEMBER VALUES (?, ?, ?, sysdate, '')";
 	            // ('abc',1234,'학생',sysdate,'');
 	            
-	            sql2 = "INSERT INTO PRIVACY VALUES (?, privacy_seq.nextval, '', ?, ?, ?, ?, ?)";
+	            sql2 = "INSERT INTO PRIVACY VALUES (?, privacy_seq.nextval, '', ?, ?, ?, ?, ?,'없음')";
 	            // ('abc',privacy_seq.nextval,1,'학생이름','남',sysdate,'abc@gamil.com',01012345678);
 	            Date date=stringToDate(member);
 
@@ -241,26 +241,51 @@ public class memDAO //회원가입 및 검사 DAO
 	        } 
 	    }// end addMem
 	
-	/*// 아이디 찾기
+	// 아이디 찾기
 	public memDTO findId(String name, String mail) {
-			
 		try {
 			member = new memDTO();
 			
 			conn=DB.getConnction();
 			
-			sb1 = new StringBuffer();
-			sb1.append("select memId from member where memName=? and memMail=?");
+			String sql1="SELECT MEMMAIL FROM PRIVACY WHERE MEMNAME=?";
+			String sql2="SELECT MEMID FROM PRIVACY WHERE MEMNAME=? AND MEMMAIL=?";
 
-			pstmt = conn.prepareStatement(sb1.toString());
+			member.setMemName(name);
+			member.setMemId("");
+			member.setMemMail("");
+			
+			pstmt = conn.prepareStatement(sql1);
 			pstmt.setString(1, name);
-			pstmt.setString(2, mail);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				member = new memDTO();
+                member.setMemMail(rs.getString("memMail"));
+			}
+
+			System.out.println(member.getMemMail()+1);
+			System.out.println(member.getMemId()+2);
+			
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, name);
+			pstmt.setString(2, member.getMemMail());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
                 member.setMemId(rs.getString("memId"));
 			}
+			
+			System.out.println(member.getMemMail()+3);
+			System.out.println(member.getMemId()+4);
+			
+			if(member.getMemId().equals("")){
+				member.setMemId("x");
+				member.setMemMail("x");
+				System.out.println(member.getMemId());
+			}
+			
+			System.out.println(member.getMemMail()+5);
+			System.out.println(member.getMemId()+6);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -273,7 +298,7 @@ public class memDAO //회원가입 및 검사 DAO
                 throw new RuntimeException(e.getMessage());
             }
 		}
-		return null;
+		return member;
 	}// end findId
 	
 	// 비번 찾기
@@ -284,22 +309,40 @@ public class memDAO //회원가입 및 검사 DAO
 			
 			conn=DB.getConnction();
 			
-			sb1 = new StringBuffer();
-			sb1.append("select memPw from member where memId=? and memName=? and memMail=?");
+			member.setMemPw("");
+			member.setMemMail("");
 			
-			pstmt = conn.prepareStatement(sb1.toString());
-			pstmt.setString(1, id);
-			pstmt.setString(2, name);
-			pstmt.setString(3, mail);
+			String sql1="select MEMMAIL FROM PRIVACY WHERE MEMNAME=?";
+			
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setString(1, name);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				member = new memDTO();
-                member.setMemPw(rs.getString("memPw"));
+                member.setMemMail(rs.getString("memMail"));
+			}
+			
+			if(member.getMemMail().equals(mail)){
+				
+				String sql2="SELECT MEMPW FROM MEMBER WHERE MEMID=(SELECT MEMID FROM PRIVACY WHERE MEMNAME=? AND MEMMAIL=?)";
+				
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, name);
+				pstmt.setString(2, member.getMemMail());
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+	                member.setMemPw(rs.getString("memPw"));
+				}
+			}
+			
+			if(member.getMemPw().equals("")){
+				member.setMemPw("x");
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		} finally {
             // Connection, PreparedStatement를 닫는다.
             try{
@@ -309,7 +352,7 @@ public class memDAO //회원가입 및 검사 DAO
                 throw new RuntimeException(e.getMessage());
             }
 		}
-		return null;
+		return member;
 	}// end findPw
-*/
+
 }// end memDAO

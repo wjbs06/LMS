@@ -7,7 +7,9 @@ import com.login.action.LoginAction;
 import com.login.action.Logout;
 import com.login.action.findForm;
 import com.login.action.idChk;
+import com.login.action.idFind;
 import com.login.action.loginForm;
+import com.login.action.pwFind;
 
 public class ActionList {
 	
@@ -30,6 +32,10 @@ public class ActionList {
 			action=new Logout();
 		}else if(list.equals("Add")){//로그아웃 페이지
 			action=new Add();
+		}else if(list.equals("idFind")){//로그아웃 페이지
+			action=new idFind();
+		}else if(list.equals("pwFind")){//로그아웃 페이지
+			action=new pwFind();
 		}
 		return action;
 	}

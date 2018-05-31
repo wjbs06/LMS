@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>    
-<%@ page import="bbs.model.*" %>    
-<!DOCTYPE html>
+<%@ page import="bbs.model.bbsDTO" %>    
+<!DOCTYPE html PUBLIC
+ "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
 <link href="../css/main.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/jquery.bxslider.min.css"/>
 <style type="text/css">
 						
 		*{
@@ -18,7 +18,7 @@
 		
 		table {
 			border-collapse: collapse;
-		}
+		}d
 		
 		table,th,td{
 			border: 1px solid gray;
@@ -28,7 +28,6 @@
 			width : 80%;
 			margin: 10px auto 50px auto;
 			/* border: 1px soid gray; */
-		
 		}
 		
 		th{
@@ -38,16 +37,30 @@
 		tr:hover{
 			background-color: #e7eae5;
 		}
+
+		td {
+			text-align: center;
+		}
 	
 		td>a{
 			display: block;
 			color:gray;
 			text-decoration: none;
 		}
-		
+	.btn {
+	    border: none;
+	    color: white;
+	    padding: 14px 28px;
+	    font-size: 16px;
+	    cursor: pointer;
+	}
+
+	.btn {background-color: #2196F3;} /* Blue */
+	.btn:hover {background: #0b7dda;}
+	
+	
 </style>
-<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="../js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -93,11 +106,35 @@
 			$('.advice').css("background", "rgba(255, 255, 255, 0)");
 		});	
 	});
+	
+	
+	
+	//검색창
+    function searchCheck(frm){
+        //검색
+        if(frm.keyWord.value ==""){
+            alert("검색 단어를 입력하세요.");
+            frm.keyWord.focus();
+            return;
+        }
+        frm.submit();      
+    }
+	
+	//검색 뒤로가기
+    function back(frm){
+    	window.location.href='BbsList.com';
+		
+	}
 
 </script>	
 	</head>	
+<jsp:useBean id="dao" class="bbs.model.bbsDAO" />
 <%
-	ArrayList<bbsDTO> list = (ArrayList<bbsDTO>)request.getAttribute("alist");
+	request.setCharacterEncoding("UTF-8");
+	String keyField = request.getParameter("keyField");
+	String keyWord = request.getParameter("keyWord");
+	
+	ArrayList<bbsDTO> sh = dao.getMemberlist(keyField, keyWord);
 %>	
 	<body>
 		<div class="container">
@@ -111,7 +148,7 @@
 				<div class="menu1" id="menu">
 					<!-- 메인화면버튼 -->
 					<div class="mainbutton">
-						<a href="Main.jsp">메인화면</a>
+						<a href="../main/Main.com">메인화면</a>
 					</div>
 				</div>
 				<div class="menu2" id="menu">
@@ -189,35 +226,49 @@
 				</div>
 				<div class="main" style="overflow: auto">
 					<!-- main list -->
-					<h2>공지게시판 리스트 페이지</h2>
+					<h2>공지사항 리스트 페이지</h2>
+				     <tr>  
+				        <td> <br>
+				            <form name="serach">
+				            <select name="keyField">
+				                <option value="bbsNo">글번호</option>
+				                <option value="bbsName">글제목</option>
+				                <option value="bbsW">글쓴이</option>  
+				            </select>
+				            <input type="text" name="keyWord" />
+				            <input type="button" value="검색" onclick="searchCheck(form)" style="background-color:#2196F3; border: none; color: white; padding: 8px; cursor: pointer;" />
+				            <input type="button" value="뒤로" onclick="back(form)" style="background-color:#2196F3; border: none; color: white; padding: 8px; cursor: pointer;" />
+				            </form>
+				        </td>      
+				    </tr>
 						<table>
 							<tr>
-								<th>글번호</th>
-								<th>분류</th>
-								<th>글제목</th>
-								<th>글내용</th>
-								<th>글쓴이</th>
-								<th>날짜</th>
-								<th>조회수</th>
-								<th>수정일시</th>
+								<th style="width: 10%;">No.</th>
+								<th style="width: 50%;">제목</th>
+								<th style="width: 15%;">이름</th>
+								<th style="width: 15%;">작성일시</th>
+								<th style="width: 10%;">조회수</th>
 							</tr>
 							<%
-								for(int i=0; i<list.size(); i++){
-									bbsDTO bean=list.get(i);
+								for(int i=0; i<sh.size(); i++){
+									bbsDTO view=sh.get(i);
 							%>							
-							<tr align="center">
-								<td>글번호</td>
-								<td>글번호</td>
-								<td>글번호</td>
-								<td>글번호</td>
-								<td>글번호</td>
-								<td>글번호</td>
-								<td>글번호</td>
-								<td>글번호</td>
+							<tr>
+								<td><a href="BbsDetail.com?idx=<%=view.getBbsNo() %>">
+								<%=view.getBbsNo() %></a></td>							
+								<td><%=view.getBbsName() %></td>
+								<td><%=view.getBbsW() %></td>
+								<td><%=view.getBbsDate() %></td>
+								<td><%=view.getBbsView() %></td>
 							</tr>
-							<% }%>							
-						</table>					
-				</div>					
+							<% }%>
+							</table>					
+							<div align="center">
+								<a href="BbsAdd.com"><button class="btn">공지 사항 입력</button></a> 				
+							</div>
+							<br>
+				</div>
+				<div class="clear"></div>
 				<div class="footer">
 					<!-- footer -->
 					<img src="../img/logo_foot.JPG"/>

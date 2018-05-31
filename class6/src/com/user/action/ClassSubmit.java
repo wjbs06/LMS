@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.admin.model.DAO.SubmitDAO;
 
-@WebServlet("/user/ClassSubmit.com")
 public class ClassSubmit extends HttpServlet{//수강신청 페이지
 
 	@Override

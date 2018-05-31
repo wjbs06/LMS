@@ -1,7 +1,7 @@
 //AddForm.jsp
 $(document).ready(function(){
 		
-		// id 중복체크 화면
+	// id 중복체크 화면
         $("#idChk").click(function(){
         	
         

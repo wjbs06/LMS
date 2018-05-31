@@ -23,7 +23,8 @@ public class LoginServlet extends HttpServlet {
 		String memId = request.getParameter("memId");//id 받음
 		System.out.println(memId+"아이디");
 		String memPw = request.getParameter("memPw");//pw 받음
-		System.out.println(memPw+"아이디");
+		System.out.println(memPw+"비밀번호");
+		
 		
 		System.out.println("temp-"+temp);
 		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함

@@ -138,6 +138,7 @@ ALTER TABLE bbsQna
 
 /* 출석 */
 CREATE TABLE chk (
+	chkNo NUMBER NOT NULL, /* 출석번호 */
 	memId VARCHAR2(20) NOT NULL, /* 아이디 */
 	chkIpD DATE NOT NULL, /* 입력일시 */
 	chkUdD DATE, /* 수정일시 */
@@ -146,14 +147,14 @@ CREATE TABLE chk (
 
 CREATE UNIQUE INDEX PK_chk
 	ON chk (
-		memId ASC
+		chkNo ASC
 	);
 
 ALTER TABLE chk
 	ADD
 		CONSTRAINT PK_chk
 		PRIMARY KEY (
-			memId
+			chkNo
 		);
 
 /* 강의장 */
@@ -227,20 +228,21 @@ ALTER TABLE bbsTeam
 
 /* 신청 */
 CREATE TABLE submit (
-	lecNo NUMBER NOT NULL, /* 강의번호 */
+	submitNo VARCHAR2(40) NOT NULL, /* 신청번호 */
+	lecName VARCHAR2(40) NOT NULL, /* 강의이름 */
 	memId VARCHAR2(20) NOT NULL /* 신청자 */
 );
 
 CREATE UNIQUE INDEX PK_submit
 	ON submit (
-		lecNo ASC
+		submitNo ASC
 	);
 
 ALTER TABLE submit
 	ADD
 		CONSTRAINT PK_submit
 		PRIMARY KEY (
-			lecNo
+			submitNo
 		);
 
 /* 공지사항 */
@@ -271,12 +273,13 @@ ALTER TABLE bbs
 CREATE TABLE privacy (
 	memId VARCHAR2(20) NOT NULL, /* 아이디 */
 	memNo NUMBER NOT NULL, /* 회원번호 */
-	lecNo NUMBER, /* 강의번호 */
+	lecName VARCHAR2(40), /* 강의이름 */
 	memName VARCHAR2(40) NOT NULL, /* 이름 */
 	memGen VARCHAR2(4) NOT NULL, /* 성별 */
-	memBrith DATE NOT NULL, /* 생년월일 */
+	memBirth DATE NOT NULL, /* 생년월일 */
 	memMail VARCHAR2(40) NOT NULL, /* 이메일 */
-	memPnum NUMBER(11,0) NOT NULL /* 전화번호 */
+	memPnum NUMBER(11,0) NOT NULL, /* 전화번호 */
+	lecStuName VARCHAR2(40) /* 기본 없음 */
 );
 
 CREATE UNIQUE INDEX PK_privacy
@@ -341,16 +344,6 @@ ALTER TABLE chk
 			memId
 		);
 
-ALTER TABLE chk
-	ADD
-		CONSTRAINT FK_member_TO_chk2
-		FOREIGN KEY (
-			teaId
-		)
-		REFERENCES member (
-			memId
-		);
-
 ALTER TABLE class
 	ADD
 		CONSTRAINT FK_member_TO_class
@@ -393,16 +386,6 @@ ALTER TABLE bbsTeam
 
 ALTER TABLE submit
 	ADD
-		CONSTRAINT FK_lechure_TO_submit
-		FOREIGN KEY (
-			lecNo
-		)
-		REFERENCES lechure (
-			lecNo
-		);
-
-ALTER TABLE submit
-	ADD
 		CONSTRAINT FK_member_TO_submit
 		FOREIGN KEY (
 			memId
@@ -429,17 +412,8 @@ ALTER TABLE privacy
 		)
 		REFERENCES member (
 			memId
-		);
-
-ALTER TABLE privacy
-	ADD
-		CONSTRAINT FK_lechure_TO_privacy
-		FOREIGN KEY (
-			lecNo
 		)
-		REFERENCES lechure (
-			lecNo
-		);
+		ON DELETE CASCADE;
 		
 drop sequence bbsQna_seq;
 create sequence bbsQna_seq;
@@ -459,6 +433,8 @@ create sequence bbs_seq;
 drop sequence bbsTeam_seq;
 create sequence bbsTeam_seq;
 
+drop sequence chk_seq;
+create sequence chk_seq;
 
 /* 직원 */
 insert into member values('E1',1234,'행정',sysdate,'');
@@ -485,7 +461,7 @@ insert into bbsMem values(bbsmem_seq.nextval,'잡담','첫번째글','내용무','abc',sy
 insert into bbsQna values(bbsQna_seq.nextval,1234,'잡담','첫번째글','내용무','E1',sysdate,1);
 
 /* 출석 */
-insert into chk values('abc',sysdate,'','');
+insert into chk values(chk_seq.nextval,'abc',sysdate,'','');
 
 /* 성적 */
 insert into grade values('abc','abc',100,100,100,sysdate,'T1','','');
@@ -494,9 +470,8 @@ insert into grade values('abc','abc',100,100,100,sysdate,'T1','','');
 insert into bbsTeam values(bbsTeam_seq.nextval,'잡담','첫번째글','내용무','1',sysdate,1);
 
 /* 신청 */
-insert into submit values(1,'abc');
+insert into submit values('1','자바','abc');
 
 /* 공지사항 */
 insert into bbs values(bbs_seq.nextval,'잡담','첫번째글','내용무','E1',sysdate,1,'');
-
 
