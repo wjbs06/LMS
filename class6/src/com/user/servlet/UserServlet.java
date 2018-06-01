@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.admin.controller.AdminList;
+import com.admin.servlet.AdminServlet;
 import com.login.servlet.LoginServlet;
 import com.user.action.Action;
 import com.user.controller.ActionList;
@@ -29,9 +31,9 @@ public class UserServlet extends HttpServlet {
 		String temp=request.getServletPath();//요청주소를 확인
 		String temp4=request.getRequestURI();//임시 확인용
 		String temp5=request.getParameter("idx");
-		String temp6=request.getParameter("id");
+		String id=request.getParameter("id");
 		
-		System.out.println("유저"+temp+temp4+temp5+temp6);//임시 확인용
+		System.out.println("유저"+temp+temp4+temp5+id);//임시 확인용
 		
 		String[] temp2=temp.split("/");//guest,member,admin 구분을 위함
 		int leng=0;
@@ -48,7 +50,7 @@ public class UserServlet extends HttpServlet {
 		
 		if(temp2[1].equals("user")){//user로 시작하면
 			ActionList al=new ActionList();//user의 actionList를 불러온다.
-			Action action=al.getAction(list);//actionList에서 원하는 행동을 찾는다.
+			Action action=al.getAction(list,id);//actionList에서 원하는 행동을 찾는다.
 			
 			if(action!=null){
 				action.execute(request, response);//해당하는 action으로 보낸다.
@@ -58,11 +60,10 @@ public class UserServlet extends HttpServlet {
 			
 			LoginServlet ls=new LoginServlet();//login servlet 객체 생성
 			ls.service(request, response);//login servlet으로 요청을 넘긴다.
-			
 		}else if(temp2[1].equals("admin")){//admin으로 시작하면
 			System.out.println("admin servlet 실행");
-			LoginServlet ls=new LoginServlet();//admin servlet 객체 생성
-			ls.service(request, response);//admin servlet으로 요청을 넘긴다.
+			AdminServlet dl=new AdminServlet();//admin servlet 객체 생성
+			dl.service(request, response);//Admin servlet으로 요청을 넘긴다.
 		}
 		
 	}

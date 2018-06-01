@@ -16,6 +16,7 @@ public class memDTO {//회원가입 DTO
     private String memIpN;		// 입력자(40)
     private Date memUpD;		// 수정일자
     private String memUpN;		// 수정자(40)
+    private String memCate;		// 분류
 	
 	public memDTO() {
 		
@@ -115,6 +116,14 @@ public class memDTO {//회원가입 DTO
 
 	public void setMemUpN(String memUpN) {
 		this.memUpN = memUpN;
+	}
+
+	public String getMemCate() {
+		return memCate;
+	}
+
+	public void setMemCate(String memCate) {
+		this.memCate = memCate;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import util.DB;
 
@@ -354,5 +355,42 @@ public class memDAO //회원가입 및 검사 DAO
 		}
 		return member;
 	}// end findPw
+
+
+	//회원 정보 조회 admin 확인
+	public memDTO getUserInfo(String memId) throws SQLException {
+		String sql="SELECT * FROM MEMBER WHERE MEMID=?";
+		
+		memDTO dto = new memDTO();
+		try {
+			try{
+				conn=DB.getConnction();
+				//conn=db.getConnction();
+			}catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+			//회원정보
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				dto.setMemCate(rs.getString("memCate"));
+			}
+			
+			//conn.commit();
+		}catch(SQLException e){
+			//conn.rollback();
+		}finally{
+			conn.setAutoCommit(true);
+			if(rs!=null)rs.close();
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		
+		System.out.println("완료");
+		return dto;
+	}// end getUserInfo
 
 }// end memDAO

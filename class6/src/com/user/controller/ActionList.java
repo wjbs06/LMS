@@ -27,7 +27,7 @@ import com.user.action.way;
 
 public class ActionList {
 	
-	public Action getAction(String list){//원하는 요청을 찾아서 값을 돌려준다.
+	public Action getAction(String list,String id){//원하는 요청을 찾아서 값을 돌려준다.
 		Action action=null;
 			// 로그.			
 			System.out.println("ActionList : "+list);
@@ -52,7 +52,7 @@ public class ActionList {
 			action=new Bigdata();
 		}else if(list.equals("Android")){//안드로이드
 			action=new Android();
-		}else if(list.equals("mypage")){//mypage
+		}else if(list.equals("mypage")&&!id.equals("")){//mypage
 			action=new mypage();
 		}else if(list.equals("memInfo")){//회원정보
 			action=new memInfo();
@@ -64,17 +64,17 @@ public class ActionList {
 			action=new memBbsD();
 		}else if(list.equals("chk")){//출석체크
 			action=new chk();
-		}else if(list.equals("Update")){//출석체크
+		}else if(list.equals("Update")){//회원정보수정
 			action=new Update();
-		}else if(list.equals("BbsList")){//출석체크
+		}else if(list.equals("BbsList")){//공지사항리스트
 			action=new BbsList();
-		}else if(list.equals("BbsAdd")){//출석체크
+		}else if(list.equals("BbsAdd")){//공지사항추가
 			action=new BbsAdd();
-		}else if(list.equals("BbsDetail")){//출석체크
+		}else if(list.equals("BbsDetail")){//공지사항 디테일
 			action=new BbsDetail();
-		}else if(list.equals("BbsDel")){//출석체크
+		}else if(list.equals("BbsDel")){//공지사항 삭제
 			action=new BbsDel();
-		}else if(list.equals("BbsEdit")){//출석체크
+		}else if(list.equals("BbsEdit")){//공지사항 수정
 			action=new BbsEdit();
 		}else {
 			action=new main();//기본으로 메인을 실행

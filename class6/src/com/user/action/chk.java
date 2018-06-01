@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.admin.model.DAO.SubmitDAO;
 import com.user.model.DAO.memDAO;
 import com.user.model.DTO.memDTO;
 
