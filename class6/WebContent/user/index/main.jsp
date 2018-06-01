@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.ArrayList" %>    
-<%@ page import="com.user.model.DTO.bbsDTO" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -9,6 +7,16 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Class6-LMS</title>
 			<jsp:include page="${realpath }/layout/Header.jsp" />
+			<style type="text/css">
+					/* 공지사항 */
+			.column{
+				display: inline;
+			    float: left;
+			    width: 300px;
+				margin: 0px 11px;
+				height: 150px;
+			}
+			</style>
 				<div class="main" style="overflow: auto" >
 					<!-- main contents Start -->
 					<div class="slideshow-container" style="margin: 20px 10px 10px 20px">
@@ -44,9 +52,9 @@
 					<!-- main bbs start -->
 					  <div class="column">
 					    <div class="card">
-					        <h3><a href="BbsList.com">공지사항</a></h3>
+					        <h3><a href="../user/BbsList.com">공지사항</a></h3>
 					        <table>
-								<c:forEach items="${mainbbs }" var="bbs"> 		        
+								<c:forEach items="${mainbbs }" var="bbs" end="3"> 		        
 								          <tr>
 								            <td align="left">●${bbs.bbsNo }</td>
 								            <td align="left">${bbs.bbsName }</td>
@@ -60,7 +68,7 @@
 					    <div class="card">
 					        <h3><a href="#">상담게시판</a></h3>
 					        <table>
-								<c:forEach items="${mainbbsqna }" var="bbsq"> 
+								<c:forEach items="${mainbbsqna }" var="bbsq"  end="3"> 
 						          <tr>
 						          	<td align="left">●${bbsq.bbsNo }</td>
 						          	<td align="left">${bbsq.bbsName }</td>
@@ -70,7 +78,7 @@
 					        </table>
 					    </div>
 					  </div>					
-					    <!-- <div class="column">
+					    <div class="column">
 					    	<div class="crad">
 					     		<a href="http://www.moel.go.kr/index.do" target=blank> 
 					     			<img src="../img/main/link1.jpg"  height="70" width="300"/>
@@ -79,7 +87,7 @@
 					     			<img src="../img/main/link2.jpg"  height="70" width="300"/>
 					     		</a>
 				     		</div>
-					     </div> -->
+					     </div>
 					<!-- main bbs end -->
 				</div>					
 			<jsp:include page="${realpath }/layout/Footer.jsp" />

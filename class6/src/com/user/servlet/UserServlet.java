@@ -17,7 +17,8 @@ import com.user.controller.ActionList;
 				"/user/index",
 				"/user/index.com",
 				"*.com",
-				"/Login"
+				"/Login",
+				"/Admin"
 		})
 		
 public class UserServlet extends HttpServlet {

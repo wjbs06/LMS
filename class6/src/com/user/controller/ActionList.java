@@ -2,6 +2,11 @@ package com.user.controller;
 
 import com.user.action.Action;
 import com.user.action.Android;
+import com.user.action.BbsAdd;
+import com.user.action.BbsDel;
+import com.user.action.BbsDetail;
+import com.user.action.BbsEdit;
+import com.user.action.BbsList;
 import com.user.action.Bigdata;
 import com.user.action.Clanguage;
 import com.user.action.CompanyChart;
@@ -61,6 +66,16 @@ public class ActionList {
 			action=new chk();
 		}else if(list.equals("Update")){//출석체크
 			action=new Update();
+		}else if(list.equals("BbsList")){//출석체크
+			action=new BbsList();
+		}else if(list.equals("BbsAdd")){//출석체크
+			action=new BbsAdd();
+		}else if(list.equals("BbsDetail")){//출석체크
+			action=new BbsDetail();
+		}else if(list.equals("BbsDel")){//출석체크
+			action=new BbsDel();
+		}else if(list.equals("BbsEdit")){//출석체크
+			action=new BbsEdit();
 		}else {
 			action=new main();//기본으로 메인을 실행
 		}

@@ -120,16 +120,15 @@ public class bbsDAO {
 			
 			while(rs.next()){
 				bbsDTO bean = new bbsDTO();
-				bean.setBbsNo(rs.getInt("bbsno"));
-				bean.setBbsCate(rs.getString("bbscate"));
-				bean.setBbsName(rs.getString("bbsname"));
-				bean.setBbsCon(rs.getString("bbscon"));
-				bean.setBbsW(rs.getString("bbsw"));
-				bean.setBbsDate(rs.getDate("bbsdate"));
-				bean.setBbsView(rs.getInt("bbsview"));
-				bean.setBbsUdD(rs.getDate("bbsudd"));
+				bean.setBbsNo(rs.getInt("bbsNo"));
+				bean.setBbsCate(rs.getString("bbsCate"));
+				bean.setBbsName(rs.getString("bbsName"));
+				bean.setBbsCon(rs.getString("bbsCon"));
+				bean.setBbsW(rs.getString("bbsW"));
+				bean.setBbsDate(rs.getDate("bbsDate"));
+				bean.setBbsView(rs.getInt("bbsView"));
+				bean.setBbsUdD(rs.getDate("bbsUdD"));
 				list.add(bean);
-			    
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -148,7 +147,7 @@ public class bbsDAO {
     
 //공지사항 상세페이지	
 	public bbsDTO selectOne(int bbsNo){
-		String sql="SELECT bbsNo,bbsName,bbsCon FROM BBS WHERE BBSNO=?";
+		String sql="SELECT * FROM BBS WHERE BBSNO=?";
 		bbsDTO bean = new bbsDTO();
 		
 		try {
@@ -166,6 +165,7 @@ public class bbsDAO {
 				bean.setBbsNo(rs.getInt("bbsNo"));
 				bean.setBbsName(rs.getString("bbsName"));
 				bean.setBbsCon(rs.getString("bbsCon"));
+				bean.setBbsW(rs.getString("bbsW"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -212,8 +212,9 @@ public class bbsDAO {
 	}		
 
 	//공지사항 수정
-	public int updateOne(int bbsNo, String bbsCon) {
-		String sql ="UPDATE BBS SET BBSCON=? , BBSUDD =SYSDATE WHERE BBSNO=?";
+	public int updateOne(int bbsNo, String bbsName,String bbsCon,String bbsW) {
+		String sql ="UPDATE BBS SET BBSCON=? , BBSUDD =SYSDATE,BBSNAME=?,BBSW=? WHERE BBSNO=?";
+		int result = 0;
 		try {
 			try{
 				conn=DB.getConnction();
@@ -224,8 +225,10 @@ public class bbsDAO {
 			}
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, bbsCon);
-			pstmt.setInt(2, bbsNo);
-			return pstmt.executeUpdate();
+			pstmt.setString(2, bbsName);
+			pstmt.setString(3, bbsW);
+			pstmt.setInt(4, bbsNo);
+			result=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -236,7 +239,7 @@ public class bbsDAO {
 				e.printStackTrace();
 			}
 		}
-		return 0;
+		return result;
 	}	
 
 //삭제
