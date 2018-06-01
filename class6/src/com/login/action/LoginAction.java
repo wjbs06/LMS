@@ -38,14 +38,14 @@ public class LoginAction implements Action {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(dto.getMemId());
+		System.out.println(dto.getMemCate());
 		
 		String realpath="../..";
 		String subpath="..";
 		request.setAttribute("realpath",realpath );
 		request.setAttribute("subpath",subpath );
 		if(result==1){
-			if(dto.getMemId()!="") {
+			if(dto.getMemCate().equals("행정")||dto.getMemCate().equals("영업")||dto.getMemCate().equals("강사")) {
 				System.out.println("직원");
 				request.setAttribute("memId",memId);
 				RequestDispatcher dispatcher=request.getRequestDispatcher(url2);

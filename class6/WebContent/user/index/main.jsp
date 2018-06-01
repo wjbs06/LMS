@@ -13,7 +13,7 @@
 				display: inline;
 			    float: left;
 			    width: 300px;
-				margin: 0px 11px;
+				margin: 0px 8px;
 				height: 150px;
 			}
 			</style>
@@ -56,9 +56,9 @@
 					        <table>
 								<c:forEach items="${mainbbs }" var="bbs" end="3"> 		        
 								          <tr>
-								            <td align="left">●${bbs.bbsNo }</td>
-								            <td align="left">${bbs.bbsName }</td>
-								            <td align="right">${bbs.bbsDate }</td>
+								            <td align="left"><a href="../user/BbsDetail.com?idx=${bbs.bbsNo }">●${bbs.bbsNo }</a></td>
+								            <td align="left"><a href="../user/BbsDetail.com?idx=${bbs.bbsNo }">${bbs.bbsName }</a></td>
+								            <td align="right"><a href="../user/BbsDetail.com?idx=${bbs.bbsNo }">${bbs.bbsDate }</a></td>
 								          </tr>
 					            </c:forEach>
 					        </table>
@@ -66,13 +66,13 @@
 					  </div>
 					  <div class="column">
 					    <div class="card">
-					        <h3><a href="#">상담게시판</a></h3>
+					        <h3><a href="../user/QnaList.com">상담게시판</a></h3>
 					        <table>
-								<c:forEach items="${mainbbsqna }" var="bbsq"  end="3"> 
+								<c:forEach items="${mainqna }" var="bbsq"  end="3"> 
 						          <tr>
-						          	<td align="left">●${bbsq.bbsNo }</td>
-						          	<td align="left">${bbsq.bbsName }</td>
-						          	<td align="right">${bbsq.bbsDate }</td>
+						          	<td align="left"><a href="../user/QnaDetail.com?idx=${bbsq.qnaNo }">●${bbsq.qnaNo }</a></td>
+						          	<td align="left"><a href="../user/QnaDetail.com?idx=${bbsq.qnaNo }">${bbsq.qnaName }</a></td>
+						          	<td align="right"><a href="../user/QnaDetail.com?idx=${bbsq.qnaNo }">${bbsq.qnaIpD }</a></td>
 						          </tr>
 					           </c:forEach>
 					        </table>

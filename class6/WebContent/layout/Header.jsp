@@ -21,11 +21,11 @@
 			if ($("label[name=id]").text() != "") {
 				$(".login").remove();
 				$('.top').prepend("<div></div>").children().first().attr({
-		            class : "logout",
-		            id : "out"
+		            'class' : "logout",
+		            'id' : "out"
 		        }).append("<button>로그아웃</button>").children().first().attr({
-		            class : "memberLogin",
-		            id : "Logout"
+		            'class' : "memberLogin",
+		            'id' : "Logout"
 		        }).after("<label>님 환영합니다</label>").css({
 		        	'float' : "right",
 		        	'margin-right' : "10px"
@@ -97,7 +97,7 @@
 				<div class="menu4" id="menu">
 					<!-- 상담 -->
 					<div class="advice">
-						<a href="../user/index.com">상담</a>
+						<a href="../user/QnaList.com">상담</a>
 					</div>
 				</div>
 				<div class="menu5" id="menu">

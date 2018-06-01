@@ -68,7 +68,7 @@
 		});
 		
 		$('button[name="back"]').click(function(){
-			location.href="../user/BbsDetail.com?idx="+$('span[name="bbsNo"]').text();
+			location.href="../user/BbsDetail.com?idx="+$('span[id="bbsNo"]').text();
 		});
 		
 	});

@@ -57,7 +57,6 @@ public class UserServlet extends HttpServlet {
 			}
 		}else if(temp2[1].equals("Login")){//login으로 시작하면
 			System.out.println("login servlet 실행");
-			
 			LoginServlet ls=new LoginServlet();//login servlet 객체 생성
 			ls.service(request, response);//login servlet으로 요청을 넘긴다.
 		}else if(temp2[1].equals("admin")){//admin으로 시작하면

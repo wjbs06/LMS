@@ -41,8 +41,16 @@
 </style>
 <jsp:include page="${realpath }/layout/Header.jsp" />
 <script type="text/javascript">
-
-$(function(){
+$(document).ready(function(){
+		if($('span[name="w"]').text()==$('label[name="w"]').text()){
+			$('button[name="edit"]').css("visibility","visible");
+			
+			$('button[name="del"]').css("visibility","visible");
+		}else{
+			$('button[name="back"]').css("margin-right","236px");
+		}
+	
+	
 		var idx=$('span[name="no"]').text();
 	
 	
@@ -62,7 +70,6 @@ $(function(){
 		$('button[name="back"]').click(function(){
 		location.href='../user/BbsList.com';
 		});
-	
 });
 </script>	
 				<div class="main" style="overflow: auto">
@@ -86,13 +93,13 @@ $(function(){
 					</div>
 					<div>
 						<span>글 쓴 이</span>
-						<span>${dto.bbsW }</span>
+						<span name="w">${dto.bbsW }</span>
 					</div><br>
 					</c:forEach>
 					<div align="center">
-						<button name="edit" style="background-color:#2196F3; border: none; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer;">
+						<button name="edit" style="visibility: hidden; background-color:#2196F3; border: none; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer;">
 						수정</button>&emsp;&emsp;
-						<button name="del" style="background-color:#2196F3; border: none; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer;">
+						<button name="del" style="visibility: hidden; background-color:#2196F3; border: none; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer;">
 						삭제</button>&emsp;&emsp;
 						<button name="back" style="background-color:#2196F3; border: none; color: white; padding: 14px 28px; font-size: 16px; cursor: pointer;">
 						뒤로</button>

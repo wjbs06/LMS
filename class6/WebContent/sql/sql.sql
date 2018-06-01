@@ -71,7 +71,7 @@ CREATE TABLE lechure (
 	lecEnd DATE NOT NULL, /* 강의종료일 */
 	lecCon LONG, /* 강의설명 */
 	teaId VARCHAR2(20) NOT NULL, /* 강사 */
-	classAdress VARCHAR2(40) NOT NULL, /* 강의장위치 */
+	classAddress VARCHAR2(40) NOT NULL, /* 강의장위치 */
 	classNum NUMBER, /* 수강인원 */
 	lecIpD DATE NOT NULL, /* 입력일시 */
 	lecIpN VARCHAR2(20) NOT NULL /* 입력자 */
@@ -273,7 +273,7 @@ ALTER TABLE bbs
 CREATE TABLE privacy (
 	memId VARCHAR2(20) NOT NULL, /* 아이디 */
 	memNo NUMBER NOT NULL, /* 회원번호 */
-	lecName VARCHAR2(40), /* 강의이름 */
+	lecNo NUMBER, /* 강의이름 */
 	memName VARCHAR2(40) NOT NULL, /* 이름 */
 	memGen VARCHAR2(4) NOT NULL, /* 성별 */
 	memBirth DATE NOT NULL, /* 생년월일 */
@@ -446,7 +446,7 @@ insert into member values('T1',1234,'강사',sysdate,'E1');
 insert into class values(1,'자바강의장','6강의장',sysdate,'E1');
 
 /* 강의 */
-insert into lechure values(1,'자바',sysdate,sysdate,'강의내용','T1','6강의장',20,sysdate,'E1');
+insert into lechure values(1,'자바',sysdate,sysdate,'강의내용','T1',1,20,sysdate,'E1');
 
 /* 회원 */
 insert into member values('abc',1234,'학생',sysdate,'');
@@ -474,4 +474,5 @@ insert into submit values('1','자바','abc');
 
 /* 공지사항 */
 insert into bbs values(bbs_seq.nextval,'잡담','첫번째글','내용무','E1',sysdate,1,'');
+
 

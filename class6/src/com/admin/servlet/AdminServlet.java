@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.admin.action.Action;
 import com.admin.controller.AdminList;
+import com.admin.controller.BbsMainController;
 import com.admin.controller.ClaMainController;
 import com.admin.controller.LecMainController;
 import com.admin.controller.StuMainController;
@@ -60,7 +61,6 @@ public class AdminServlet extends HttpServlet {
 					}
 				}
 			}else if(temp2[3]!=null) {
-				
 				if(temp2[2].equals("class")) {
 					ClaMainController cmc=new ClaMainController();
 					cmc.service(request, response);
@@ -70,6 +70,18 @@ public class AdminServlet extends HttpServlet {
 				}else if(temp2[2].equals("stu")) {
 					StuMainController smc=new StuMainController();
 					smc.service(request, response);
+				}else if(temp2[2].equals("bbs")) {
+					AdminList al=new AdminList();
+					Action action=al.getAction(list);
+					
+					if(action!=null){
+						try {
+							action.execute(request, response);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}else {
 					//default ∏ﬁ¿Œ
 					AdminList al=new AdminList();

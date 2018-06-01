@@ -13,6 +13,11 @@ import com.user.action.CompanyChart;
 import com.user.action.Intro;
 import com.user.action.Java;
 import com.user.action.LecIntro;
+import com.user.action.QnaAdd;
+import com.user.action.QnaDel;
+import com.user.action.QnaEdit;
+import com.user.action.QnaList;
+import com.user.action.QnaPw;
 import com.user.action.Update;
 import com.user.action.chk;
 import com.user.action.main;
@@ -76,6 +81,16 @@ public class ActionList {
 			action=new BbsDel();
 		}else if(list.equals("BbsEdit")){//공지사항 수정
 			action=new BbsEdit();
+		}else if(list.equals("QnaList")){//공지사항 수정
+			action=new QnaList();
+		}else if(list.equals("QnaAdd")){//공지사항 수정
+			action=new QnaAdd();
+		}else if(list.equals("QnaDel")){//공지사항 수정
+			action=new QnaDel();
+		}else if(list.equals("QnaEdit")){//공지사항 수정
+			action=new QnaEdit();
+		}else if(list.equals("QnaPw")){//공지사항 수정
+			action=new QnaPw();
 		}else {
 			action=new main();//기본으로 메인을 실행
 		}
