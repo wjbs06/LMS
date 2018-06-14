@@ -8,7 +8,7 @@
 		<title>Class6-LMS</title>
 			<jsp:include page="${realpath }/layout/Header.jsp" />
 			<style type="text/css">
-					/* 공지사항asdasdsadasd */
+					/* 공지사항 */
 			.column{
 				display: inline;
 			    float: left;
